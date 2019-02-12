@@ -7,6 +7,8 @@ import penImage from './pen.png';
 import penInsetImage from './pen-small.svg';
 import videoImage from './video-sensing.png';
 import videoInsetImage from './video-sensing-small.svg';
+import playspotsImage from './playspots.png';
+import playspotsInsetImage from './playspots-small.svg';
 import translateImage from './translate.png';
 import translateInsetImage from './translate-small.png';
 import microbitImage from './microbit.png';
@@ -146,6 +148,34 @@ export default [
         featured: true
     },
     {
+        name: 'Playspot',
+        extensionId: 'playspot',
+        collaborator: 'ComputeCycles',
+        iconURL: playspotsImage,
+        insetIconURL: playspotsInsetImage,
+        description: (
+            <FormattedMessage
+                defaultMessage="The world is your playground.  Now program it!"
+                description="Description for the 'playspot' extension"
+                id="gui.extension.playspot.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: true,
+        peripheralImage: playspotsInsetImage,
+        smallPeripheralImage: playspotsInsetImage,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting..."
+                description="Message to help people connect to their playspot"
+                id="gui.extension.playspot.connectingMessage"
+            />
+        ),
+        bluetoothRequired: false
+    },
+    {
         name: 'micro:bit',
         extensionId: 'microbit',
         collaborator: 'micro:bit',
@@ -232,6 +262,5 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/wedo'
-
     }
 ];

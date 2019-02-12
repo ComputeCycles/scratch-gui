@@ -82,6 +82,9 @@ const base = {
             }]
         }]
     },
+    node: {
+        fs: 'empty'
+    },
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
@@ -89,7 +92,7 @@ const base = {
             })
         ]
     },
-    plugins: []
+    plugins: [new webpack.NormalModuleReplacementPlugin(/^mqtt$/, 'mqtt/dist/mqtt.js')]
 };
 
 module.exports = [

@@ -20,15 +20,16 @@ class ConnectionModal extends React.Component {
             'handleError',
             'handleHelp'
         ]);
+        const extension = extensionData.find(ext => ext.extensionId === props.extensionId);
         this.state = {
-            extension: extensionData.find(ext => ext.extensionId === props.extensionId),
-            phase: props.vm.getPeripheralIsConnected(props.extensionId) ?
-                PHASES.connected : PHASES.scanning
+            extension: extension,
+            phase: props.vm.getPeripheralIsConnected(props.extensionId) ? PHASES.connected : PHASES.scanning
         };
     }
     componentDidMount () {
         this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
+        if (this.props.extensionId === 'playspot') this.handleConnecting();
     }
     componentWillUnmount () {
         this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleConnected);
@@ -95,6 +96,7 @@ class ConnectionModal extends React.Component {
             action: 'connected',
             label: this.props.extensionId
         });
+        this.props.vm.extensionManager.refreshBlocks();
     }
     handleHelp () {
         window.open(this.state.extension.helpLink, '_blank');
