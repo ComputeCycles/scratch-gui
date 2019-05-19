@@ -12,6 +12,7 @@ class ConnectionModal extends React.Component {
     constructor (props) {
         super(props);
         bindAll(this, [
+            'handleAddressEntry',
             'handleScanning',
             'handleCancel',
             'handleConnected',
@@ -29,7 +30,7 @@ class ConnectionModal extends React.Component {
     componentDidMount () {
         this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
-        if (this.props.extensionId === 'playspot') this.handleConnecting();
+        if (this.props.extensionId === 'playspot') this.handleAddressEntry();
     }
     componentWillUnmount () {
         this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleConnected);
@@ -38,6 +39,11 @@ class ConnectionModal extends React.Component {
     handleScanning () {
         this.setState({
             phase: PHASES.scanning
+        });
+    }
+    handleAddressEntry () {
+        this.setState({
+            phase: PHASES.addressEntry
         });
     }
     handleConnecting (peripheralId) {
@@ -125,6 +131,7 @@ class ConnectionModal extends React.Component {
                 onDisconnect={this.handleDisconnect}
                 onHelp={this.handleHelp}
                 onScanning={this.handleScanning}
+                onUpdatePlayspotAddress={this.handleConnecting}
             />
         );
     }
