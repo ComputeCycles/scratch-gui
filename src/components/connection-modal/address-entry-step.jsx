@@ -15,10 +15,7 @@ import styles from './connection-modal.css';
 const AddressEntryStep = props => (
     <Box className={styles.body}>
         <Box className={styles.activityArea}>
-            <div
-                layout
-                vertical
-            >
+            <div>
                 <div
                     className={styles.centeredRow}
                     padding-top="12px"

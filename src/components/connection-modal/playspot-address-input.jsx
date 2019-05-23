@@ -30,7 +30,7 @@ class PlayspotAddressInput extends React.Component {
     // is used within scratch-www)
     handleUpdatePlayspotAddress (newAddress) {
         if (this.props.onUpdatePlayspotAddress) {
-            this.props.onUpdatePlayspotAddress(newAddress);
+            this.props.onUpdatePlayspotAddress(`ws://${newAddress}:3000`);
         }
     }
     render () {
