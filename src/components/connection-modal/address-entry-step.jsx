@@ -34,6 +34,8 @@ const AddressEntryStep = props => (
                 >
                     <PlayspotAddressInput
                         className={classNames(styles.titleFieldGrowable)}
+                        playspotAddress="localhost"
+                        width="100%"
                         onUpdatePlayspotAddress={props.onUpdatePlayspotAddress}
                     />
                 </div>

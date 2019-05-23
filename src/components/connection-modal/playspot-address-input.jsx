@@ -37,11 +37,12 @@ class PlayspotAddressInput extends React.Component {
         return (
             <BufferedInput
                 className={classNames(styles.titleField, this.props.className)}
-                maxLength="100"
+                label="Playspot Address:"
+                maxLength="200"
                 placeholder={this.props.intl.formatMessage(messages.playspotAddressPlaceholder)}
                 tabIndex="0"
                 type="text"
-                value={this.props.playspotAddress}
+                value={this.props.playspotAddress || 'localhost'}
                 onSubmit={this.handleUpdatePlayspotAddress}
             />
         );
@@ -51,13 +52,11 @@ class PlayspotAddressInput extends React.Component {
 PlayspotAddressInput.propTypes = {
     className: PropTypes.string,
     intl: intlShape.isRequired,
-    onUpdatePlayspotAddress: PropTypes.func,
+    onUpdatePlayspotAddress: PropTypes.func.isRequired,
     playspotAddress: PropTypes.string
 };
 
-const mapStateToProps = state => ({
-    playspotAddress: state.scratchGui.playspotAddress
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = () => ({});
 
