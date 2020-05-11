@@ -118,6 +118,7 @@ class LibraryItem extends React.PureComponent {
                 featured={this.props.featured}
                 hidden={this.props.hidden}
                 iconURL={iconURL}
+                iconRawURL={this.iconRawURL}
                 icons={this.props.icons}
                 id={this.props.id}
                 insetIconURL={this.props.insetIconURL}

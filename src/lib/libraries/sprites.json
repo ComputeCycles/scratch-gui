@@ -140,6 +140,64 @@
         }
     },
     {
+        "name": "Satellite",
+        "rawURL": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite.svg",
+        "type": "sprite",
+        "tags": [
+            "food",
+            "red",
+            "crunchy",
+            "fruit"
+        ],
+        "info": [
+            0,
+            1,
+            1
+        ],
+        "json": {
+            "isStage": false,
+            "name": "Dog",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "assetId": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite",
+                    "name": "satellite",
+                    "bitmapResolution": 1,
+                    "rawURL": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite.svg",
+                    "dataFormat": "png",
+                    "rotationCenterX": 31,
+                    "rotationCenterY": 31
+                }
+            ],
+            "sounds": [
+                {
+                    "assetId": "0b1e3033140d094563248e61de4039e5",
+                    "name": "Chomp",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 11648,
+                    "md5ext": "0b1e3033140d094563248e61de4039e5.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": 93,
+            "y": -23,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "objName": "Apple"
+        }
+    },
+    {
         "name": "Andie",
         "md5": "b36584db82bdd45014430aa918461ca0.svg",
         "type": "sprite",
