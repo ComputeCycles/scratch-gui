@@ -10,7 +10,6 @@ const getCostumeUrl = (function () {
 
     return function (asset) {
         // eslint-disable-next-line no-console
-        console.log(cachedAssetId);
         if (cachedAssetId === asset.assetId) {
             return cachedUrl;
         }
@@ -24,8 +23,6 @@ const getCostumeUrl = (function () {
             if (svgString.match(HAS_FONT_REGEXP)) {
                 const svgText = inlineSvgFonts(svgString);
                 cachedUrl = `data:image/svg+xml;utf8,${encodeURIComponent(svgText)}`;
-                // eslint-disable-next-line no-console
-                console.log(cachedUrl);
             } else {
                 cachedUrl = asset.encodeDataURI();
             }

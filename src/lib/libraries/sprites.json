@@ -141,13 +141,10 @@
     },
     {
         "name": "Satellite",
-        "rawURL": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite.svg",
+        "rawURL": "https://gist.githubusercontent.com/phillipsja97/3b36e033b1dc5dfca3b800db3b8dd8fe/raw/d9e9e2daa083fa50bb3aa10d5630004f585e68c1/Satellite2.svg",
         "type": "sprite",
         "tags": [
-            "food",
-            "red",
-            "crunchy",
-            "fruit"
+           "letters"
         ],
         "info": [
             0,
@@ -156,30 +153,20 @@
         ],
         "json": {
             "isStage": false,
-            "name": "Dog",
+            "name": "Satellite",
             "variables": {},
             "lists": {},
             "broadcasts": {},
             "blocks": {},
             "comments": {},
             "currentCostume": 0,
-            "costumes": [
-                {
-                    "assetId": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite",
-                    "name": "satellite",
-                    "bitmapResolution": 1,
-                    "rawURL": "https://gist.githubusercontent.com/phillipsja97/a5fc0b6a18d1378c63d4cbf2b8e610c5/raw/b4867edd19380a52d014fb7948cbe31a16a4ef3e/satellite.svg",
-                    "dataFormat": "png",
-                    "rotationCenterX": 31,
-                    "rotationCenterY": 31
-                }
-            ],
+            "costumes": [],
             "sounds": [
                 {
                     "assetId": "0b1e3033140d094563248e61de4039e5",
                     "name": "Chomp",
                     "dataFormat": "wav",
-                    "format": "",
+                    "format": "adpcm",
                     "rate": 44100,
                     "sampleCount": 11648,
                     "md5ext": "0b1e3033140d094563248e61de4039e5.wav"
@@ -194,7 +181,7 @@
             "direction": 90,
             "draggable": false,
             "rotationStyle": "all around",
-            "objName": "Apple"
+            "objName": "Satellite"
         }
     },
     {
