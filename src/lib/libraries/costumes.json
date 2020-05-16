@@ -333,20 +333,7 @@
     },
     {
         "name": "satellite-a",
-        "rawURL": "b4867edd19380a52d014fb7948cbe31a16a4ef3e",
-        "type": "costume",
-        "tags": [
-            "letters"
-        ],
-        "info": [
-            31,
-            31,
-            1
-        ]
-    },
-    {
-        "name": "satellite-b",
-        "rawURL": "b4867edd19380a52d014fb7948cbe31a16a4ef3e",
+        "rawURL": "a5fc0b6a18d1378c63d4cbf2b8e610c5.svg",
         "type": "costume",
         "tags": [
             "letters"

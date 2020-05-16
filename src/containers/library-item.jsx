@@ -105,9 +105,13 @@ class LibraryItem extends React.PureComponent {
     }
     render () {
         const iconMd5 = this.curIconMd5();
-        const iconURL = iconMd5 ?
-            `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
-            this.props.iconRawURL;
+        const iconURL = iconMd5 ? `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
+            this.props.iconRawURL ? this.props.iconRawURL :
+                `https://gist.githubusercontent.com/phillipsja97/${this.props.iconRawURL}/raw/82e06a418789ee0bf68bd8bb82cefc4bf5c4eb7e/satellite.svg`;
+        // const iconURL = iconMd5 ?
+        //     `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
+        //     // `https://gist.githubusercontent.com/phillipsja97/${this.props.iconRawURL}/raw/82e06a418789ee0bf68bd8bb82cefc4bf5c4eb7e/satellite.svg`;
+        //     this.props.iconRawURL;
         return (
             <LibraryItemComponent
                 bluetoothRequired={this.props.bluetoothRequired}
