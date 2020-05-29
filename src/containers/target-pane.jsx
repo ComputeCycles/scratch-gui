@@ -130,6 +130,8 @@ class TargetPane extends React.Component {
         this.props.onActivateTab(BLOCKS_TAB_INDEX);
     }
     handleNewSprite (spriteJSONString) {
+        // eslint-disable-next-line no-console
+        console.log(spriteJSONString, 'json');
         return this.props.vm.addSprite(spriteJSONString)
             .then(this.handleActivateBlocksTab);
     }

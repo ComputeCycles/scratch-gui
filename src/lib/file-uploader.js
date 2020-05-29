@@ -197,6 +197,8 @@ const soundUpload = function (fileData, fileType, storage, handleSound) {
 };
 
 const spriteUpload = function (fileData, fileType, spriteName, storage, handleSprite, handleError = () => {}) {
+    // eslint-disable-next-line no-console
+    console.log(fileData);
     switch (fileType) {
     case '':
     case 'application/zip': { // We think this is a .sprite2 or .sprite3 file
