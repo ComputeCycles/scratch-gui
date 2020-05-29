@@ -332,14 +332,11 @@
         ]
     },
     {
-        "name": "Apple",
-        "md5": "3826a4091a33e4d26f87a2fac7cf796b.svg",
+        "name": "satellite-a",
+        "rawURL": "a5fc0b6a18d1378c63d4cbf2b8e610c5.svg",
         "type": "costume",
         "tags": [
-            "food",
-            "red",
-            "crunchy",
-            "fruit"
+            "letters"
         ],
         "info": [
             31,

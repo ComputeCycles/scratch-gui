@@ -46,6 +46,9 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
+// import satelliteSequenceIconURL from './satelliteSequence/satellite2.png';
+// import satelliteSequenceInsetIconURL from './satelliteSequence/satellite-small.svg';
+
 export default [
     {
         name: (
@@ -317,5 +320,24 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/vernier'
+    },
+    {
+        name: 'Satellite Sequence',
+        extensionId: 'sequence',
+        collaborator: 'ComputeCycles',
+        iconURL: gdxforIconURL,
+        insetIconURL: gdxforInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Satellite Sequences"
+                description="Setting a sequence for a satellite."
+                id="gui.extension.sequences.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        internetConnectionRequired: true,
+        bluetoothRequired: false,
+        helpLink: 'https://scratch.mit.edu/wedo'
     }
 ];

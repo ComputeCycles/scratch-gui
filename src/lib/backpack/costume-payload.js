@@ -18,6 +18,7 @@ const costumePayload = costume => {
     case 'svg':
         payload.mime = 'image/svg+xml';
         payload.body = assetDataUrl.replace('data:image/svg+xml;base64,', '');
+        // eslint-disable-next-line no-console
         break;
     case 'png':
         payload.mime = 'image/png';

@@ -9,7 +9,7 @@ const getCostumeUrl = (function () {
     let cachedUrl;
 
     return function (asset) {
-
+        // eslint-disable-next-line no-console
         if (cachedAssetId === asset.assetId) {
             return cachedUrl;
         }

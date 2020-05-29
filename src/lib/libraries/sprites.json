@@ -140,6 +140,61 @@
         }
     },
     {
+        "name": "Satellite",
+        "rawURL": "a5fc0b6a18d1378c63d4cbf2b8e610c5",
+        "type": "sprite",
+        "tags": [
+           "letters"
+        ],
+        "info": [
+            0,
+            1,
+            1
+        ],
+        "json": {
+            "isStage": false,
+            "name": "Satellite",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "assetId": "a5fc0b6a18d1378c63d4cbf2b8e610c5",
+                    "name": "satellite",
+                    "bitmapResolution": 1,
+                    "rawURL": "a5fc0b6a18d1378c63d4cbf2b8e610c5.svg",
+                    "dataFormat": "svg",
+                    "rotationCenterX": 28,
+                    "rotationCenterY": 23
+                }
+            ],
+            "sounds": [
+                {
+                    "assetId": "0b1e3033140d094563248e61de4039e5",
+                    "name": "Chomp",
+                    "dataFormat": "wav",
+                    "format": "adpcm",
+                    "rate": 44100,
+                    "sampleCount": 11648,
+                    "md5ext": "0b1e3033140d094563248e61de4039e5.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 2,
+            "visible": true,
+            "x": -90,
+            "y": 148,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "objName": "Satellite"
+        }
+    },
+    {
         "name": "Andie",
         "md5": "b36584db82bdd45014430aa918461ca0.svg",
         "type": "sprite",
