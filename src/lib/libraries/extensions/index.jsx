@@ -46,8 +46,8 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
-// import satelliteSequenceIconURL from './satelliteSequence/satellite2.png';
-// import satelliteSequenceInsetIconURL from './satelliteSequence/satellite-small.svg';
+import satelliteSequenceIconURL from './satelliteSequence/Satellite.png';
+import satelliteSequenceInsetIconURL from './satelliteSequence/Satellite.png';
 
 export default [
     {
@@ -325,8 +325,8 @@ export default [
         name: 'Satellite Sequence',
         extensionId: 'sequence',
         collaborator: 'ComputeCycles',
-        iconURL: gdxforIconURL,
-        insetIconURL: gdxforInsetIconURL,
+        iconURL: satelliteSequenceIconURL,
+        insetIconURL: satelliteSequenceInsetIconURL,
         description: (
             <FormattedMessage
                 defaultMessage="Satellite Sequences"
