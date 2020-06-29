@@ -332,19 +332,6 @@
         ]
     },
     {
-        "name": "satellite-a",
-        "rawURL": "a5fc0b6a18d1378c63d4cbf2b8e610c5.svg",
-        "type": "costume",
-        "tags": [
-            "letters"
-        ],
-        "info": [
-            31,
-            31,
-            1
-        ]
-    },
-    {
         "name": "Arrow1-a",
         "md5": "be8fcd10da0b082f8d4775088ef7bd52.svg",
         "type": "costume",
