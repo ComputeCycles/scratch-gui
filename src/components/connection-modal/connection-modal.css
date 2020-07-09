@@ -25,6 +25,14 @@
     align-items: center;
 }
 
+.centered-row-playspot {
+    display: flex;
+    min-width: 75%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .peripheral-tile-pane {
     overflow-y: auto;
     width: 100%;
@@ -219,7 +227,7 @@
 }
 
 .activityArea {
-    height: 165px;
+    height: 200px;
     background-color: $motion-light-transparent;
     display: flex;
     justify-content: center;
