@@ -7,6 +7,7 @@ import Box from '../box/box.jsx';
 import Dots from './dots.jsx';
 import PlayspotAddressInput from './playspot-address-input.jsx';
 
+
 import helpIcon from './icons/help.svg';
 
 import styles from './connection-modal.css';
