@@ -29,8 +29,8 @@ class ConnectionModal extends React.Component {
             extension: extension,
             phase: props.vm.getPeripheralIsConnected(props.extensionId) ? PHASES.connected : PHASES.scanning,
             playspotAddress: 'localhost',
-            playspotUserName: 'username',
-            playspotPassword: 'password'
+            playspotUserName: null,
+            playspotPassword: null
         };
     }
     componentDidMount () {
@@ -38,8 +38,8 @@ class ConnectionModal extends React.Component {
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
         if (this.props.extensionId === 'playspot' || 'sequence') {
             this.handleAddressEntry('localhost');
-            this.handleUserNameEntry('username');
-            this.handlePasswordEntry('password');
+            this.handleUserNameEntry(null);
+            this.handlePasswordEntry(null);
         }
     }
     componentWillUnmount () {
