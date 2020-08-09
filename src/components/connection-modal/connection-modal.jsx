@@ -11,10 +11,12 @@ import ConnectingStep from './connecting-step.jsx';
 import ConnectedStep from './connected-step.jsx';
 import ErrorStep from './error-step.jsx';
 import UnavailableStep from './unavailable-step.jsx';
+import AddressEntryStep from './address-entry-step.jsx';
 
 import styles from './connection-modal.css';
 
 const PHASES = keyMirror({
+    addressEntry: null,
     scanning: null,
     connecting: null,
     connected: null,
@@ -33,6 +35,7 @@ const ConnectionModalComponent = props => (
         onRequestClose={props.onCancel}
     >
         <Box className={styles.body}>
+            {props.phase === PHASES.addressEntry && <AddressEntryStep {...props} />}
             {props.phase === PHASES.scanning && !props.useAutoScan && <ScanningStep {...props} />}
             {props.phase === PHASES.scanning && props.useAutoScan && <AutoScanningStep {...props} />}
             {props.phase === PHASES.connecting && <ConnectingStep {...props} />}
@@ -52,7 +55,10 @@ ConnectionModalComponent.propTypes = {
     onHelp: PropTypes.func.isRequired,
     phase: PropTypes.oneOf(Object.keys(PHASES)).isRequired,
     title: PropTypes.string.isRequired,
-    useAutoScan: PropTypes.bool.isRequired
+    useAutoScan: PropTypes.bool.isRequired,
+    playspotAddress: PropTypes.string,
+    playspotUserName: PropTypes.string,
+    playspotPassword: PropTypes.string
 };
 
 ConnectionModalComponent.defaultProps = {

@@ -46,6 +46,14 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
+import satelliteSequenceIconURL from './satelliteSequence/Satellite.png';
+import satelliteSequenceInsetIconURL from './satelliteSequence/Satellite.png';
+
+import playspotsImage from './playspots.png';
+import playspotsInsetImage from './playspots-80x80.png';
+import playspotsConnectionIconURL from './playspots-illustration.png';
+import playspotsConnectionSmallIconURL from './playspots-80x80.png';
+
 export default [
     {
         name: (
@@ -165,6 +173,36 @@ export default [
             />
         ),
         featured: true
+    },
+    {
+        name: 'Playspot',
+        extensionId: 'playspot',
+        collaborator: 'ComputeCycles',
+        iconURL: playspotsImage,
+        insetIconURL: playspotsInsetImage,
+        connectionIconURL: playspotsConnectionIconURL,
+        connectionSmallIconURL: playspotsConnectionSmallIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="The world is your playground.  Now program it!"
+                description="Description for the 'playspot' extension"
+                id="gui.extension.playspot.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: true,
+        peripheralImage: playspotsImage,
+        smallPeripheralImage: playspotsInsetImage,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting..."
+                description="Message to help people connect to their playspot"
+                id="gui.extension.playspot.connectingMessage"
+            />
+        ),
+        bluetoothRequired: false
     },
     {
         name: 'micro:bit',
@@ -317,5 +355,35 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/vernier'
+    },
+    {
+        name: 'Satellite Sequences',
+        extensionId: 'sequence',
+        collaborator: 'ComputeCycles',
+        iconURL: playspotsImage,
+        insetIconURL: playspotsInsetImage,
+        connectionIconURL: playspotsConnectionIconURL,
+        connectionSmallIconURL: playspotsConnectionSmallIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="The world is your playground.  Now program it!"
+                description="Description for the 'satellite' extension"
+                id="gui.extension.satellite.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: true,
+        peripheralImage: playspotsImage,
+        smallPeripheralImage: playspotsInsetImage,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting..."
+                description="Message to help people connect to their satellite"
+                id="gui.extension.satellite.connectingMessage"
+            />
+        ),
+        bluetoothRequired: false
     }
 ];
