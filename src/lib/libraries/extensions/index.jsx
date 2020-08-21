@@ -357,22 +357,33 @@ export default [
         helpLink: 'https://scratch.mit.edu/vernier'
     },
     {
-        name: 'Satellite Sequence',
+        name: 'Satellite Sequences',
         extensionId: 'sequence',
         collaborator: 'ComputeCycles',
-        iconURL: satelliteSequenceIconURL,
-        insetIconURL: satelliteSequenceInsetIconURL,
+        iconURL: playspotsImage,
+        insetIconURL: playspotsInsetImage,
+        connectionIconURL: playspotsConnectionIconURL,
+        connectionSmallIconURL: playspotsConnectionSmallIconURL,
         description: (
             <FormattedMessage
-                defaultMessage="Satellite Sequences"
-                description="Setting a sequence for a satellite."
-                id="gui.extension.sequences.description"
+                defaultMessage="The world is your playground.  Now program it!"
+                description="Description for the 'satellite' extension"
+                id="gui.extension.satellite.description"
             />
         ),
         featured: true,
         disabled: false,
-        internetConnectionRequired: true,
-        bluetoothRequired: false,
-        helpLink: 'https://scratch.mit.edu/wedo'
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: true,
+        peripheralImage: playspotsImage,
+        smallPeripheralImage: playspotsInsetImage,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting..."
+                description="Message to help people connect to their satellite"
+                id="gui.extension.satellite.connectingMessage"
+            />
+        ),
+        bluetoothRequired: false
     }
 ];

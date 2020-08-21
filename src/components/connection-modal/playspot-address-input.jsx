@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import classNames from 'classnames';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -32,11 +33,18 @@ const messages = defineMessages({
 class PlayspotAddressInput extends React.Component {
     constructor (props) {
         super(props);
+        // eslint-disable-next-line no-console
+        console.log(props);
         bindAll(this, [
             'handleUpdatePlayspotAddress',
             'handleUpdatePlayspotUserName',
             'handleUpdatePlayspotPassword'
         ]);
+        this.state = {
+            addressValue: null,
+            userNameValue: null,
+            passwordValue: null
+        };
     }
     // call onUpdatePlayspotAddress if it is defined (only defined when gui
     // is used within scratch-www)
@@ -55,6 +63,15 @@ class PlayspotAddressInput extends React.Component {
             this.props.onUpdatePlayspotPassword(`${newPassword}`);
         }
     }
+    handleAddressOnChange (e) {
+        this.setState({addressValue: e.target.value});
+    }
+    handleUserNameOnChange (e) {
+        this.setState({userNameValue: e.target.value});
+    }
+    handlePasswordOnChange (e) {
+        this.setState({passwordValue: e.target.value});
+    }
     render () {
         return (
             <div className={styles.row}>
@@ -66,7 +83,8 @@ class PlayspotAddressInput extends React.Component {
                         placeholder={this.props.intl.formatMessage(messages.playspotAddressPlaceholder)}
                         tabIndex="0"
                         type="text"
-                        value={this.props.playspotAddress || 'localhost'}
+                        value={this.state.addressValue}
+                        onChange={this.handleAddressOnChange}
                         onSubmit={this.handleUpdatePlayspotAddress}
                     />
                     <BufferedInput
@@ -76,7 +94,8 @@ class PlayspotAddressInput extends React.Component {
                         placeholder={this.props.intl.formatMessage(messages.playspotUserNamePlaceholder)}
                         tabIndex="0"
                         type="text"
-                        value={this.props.playspotUserName || ''}
+                        value={this.state.userNameValue}
+                        onChange={this.handleUserNameOnChange}
                         onSubmit={this.handleUpdatePlayspotUserName}
                     />
                     <BufferedInput
@@ -85,8 +104,9 @@ class PlayspotAddressInput extends React.Component {
                         maxLength="100"
                         placeholder={this.props.intl.formatMessage(messages.playspotPasswordPlaceholder)}
                         tabIndex="0"
-                        type="text"
-                        value={this.props.playspotPassword || ''}
+                        type="password"
+                        value={this.state.passwordValue}
+                        onChange={this.handlePasswordOnChange}
                         onSubmit={this.handleUpdatePlayspotPassword}
                     />
                 </div>

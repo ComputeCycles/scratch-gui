@@ -22,13 +22,13 @@ can set a width for example or what it should do in a flex box (eg. grow).
 }
 
 .title-field {
-    color: $ui-white;
+    color: black;
     font-weight: bold;
     font-size: .8rem;
 }
 
 .title-field::placeholder {
-    color: $ui-white;
+    color: gray;
     font-weight: normal;
     font-size: .8rem;
     font-style: italic;
@@ -44,5 +44,5 @@ can set a width for example or what it should do in a flex box (eg. grow).
     -webkit-box-shadow: 0 0 0 calc($space * .5) $ui-white-transparent;
     box-shadow: 0 0 0 calc($space * .5) $ui-white-transparent;
     background-color: $ui-white;
-    color: $text-primary;
+    color: gray;
 }

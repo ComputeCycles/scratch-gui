@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import PropTypes from 'prop-types';
 import React from 'react';
 import bindAll from 'lodash.bindall';
@@ -28,17 +29,17 @@ class ConnectionModal extends React.Component {
             extension: extension,
             phase: props.vm.getPeripheralIsConnected(props.extensionId) ? PHASES.connected : PHASES.scanning,
             playspotAddress: 'localhost',
-            playspotUserName: 'username',
-            playspotPassword: 'password'
+            playspotUserName: null,
+            playspotPassword: null
         };
     }
     componentDidMount () {
         this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
-        if (this.props.extensionId === 'playspot') {
+        if (this.props.extensionId === 'playspot' || 'sequence') {
             this.handleAddressEntry('localhost');
-            this.handleUserNameEntry('username');
-            this.handlePasswordEntry('password');
+            this.handleUserNameEntry(null);
+            this.handlePasswordEntry(null);
         }
     }
     componentWillUnmount () {
