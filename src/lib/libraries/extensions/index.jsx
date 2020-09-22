@@ -175,8 +175,38 @@ export default [
         featured: true
     },
     {
-        name: 'Playspot',
-        extensionId: 'playspot',
+        name: 'PlaySpots',
+        extensionId: 'PlaySpots',
+        collaborator: 'ComputeCycles',
+        iconURL: playspotsImage,
+        insetIconURL: playspotsInsetImage,
+        connectionIconURL: playspotsConnectionIconURL,
+        connectionSmallIconURL: playspotsConnectionSmallIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="The world is your playground.  Now program it!"
+                description="Description for the 'playspot' extension"
+                id="gui.extension.playspot.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: true,
+        peripheralImage: playspotsImage,
+        smallPeripheralImage: playspotsInsetImage,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting..."
+                description="Message to help people connect to their playspot"
+                id="gui.extension.playspot.connectingMessage"
+            />
+        ),
+        bluetoothRequired: false
+    },
+    {
+        name: 'PlaySpots Setup',
+        extensionId: 'PlaySpotsSetup',
         collaborator: 'ComputeCycles',
         iconURL: playspotsImage,
         insetIconURL: playspotsInsetImage,
