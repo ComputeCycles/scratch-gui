@@ -40,6 +40,7 @@ class ExtensionLibrary extends React.PureComponent {
             if (this.props.vm.extensionManager.isExtensionLoaded(url)) {
                 this.props.onCategorySelected(id);
             } else {
+                window.vm = this.props.vm;
                 this.props.vm.extensionManager.loadExtensionURL(url).then(() => {
                     this.props.onCategorySelected(id);
                 });

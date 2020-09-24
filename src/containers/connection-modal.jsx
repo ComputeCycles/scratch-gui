@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import PropTypes from 'prop-types';
 import React from 'react';
 import bindAll from 'lodash.bindall';
@@ -12,6 +13,9 @@ class ConnectionModal extends React.Component {
     constructor (props) {
         super(props);
         bindAll(this, [
+            'handleAddressEntry',
+            'handleUserNameEntry',
+            'handlePasswordEntry',
             'handleScanning',
             'handleCancel',
             'handleConnected',
@@ -20,15 +24,23 @@ class ConnectionModal extends React.Component {
             'handleError',
             'handleHelp'
         ]);
+        const extension = extensionData.find(ext => ext.extensionId === props.extensionId);
         this.state = {
-            extension: extensionData.find(ext => ext.extensionId === props.extensionId),
-            phase: props.vm.getPeripheralIsConnected(props.extensionId) ?
-                PHASES.connected : PHASES.scanning
+            extension: extension,
+            phase: props.vm.getPeripheralIsConnected(props.extensionId) ? PHASES.connected : PHASES.scanning,
+            playspotAddress: 'localhost',
+            playspotUserName: null,
+            playspotPassword: null
         };
     }
     componentDidMount () {
         this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
+        if (this.props.extensionId === 'playspot' || 'sequence' || 'playspotSetup') {
+            this.handleAddressEntry('localhost');
+            this.handleUserNameEntry(null);
+            this.handlePasswordEntry(null);
+        }
     }
     componentWillUnmount () {
         this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleConnected);
@@ -39,8 +51,31 @@ class ConnectionModal extends React.Component {
             phase: PHASES.scanning
         });
     }
-    handleConnecting (peripheralId) {
-        this.props.vm.connectPeripheral(this.props.extensionId, peripheralId);
+    handleAddressEntry (address) {
+        this.setState({
+            phase: PHASES.addressEntry,
+            playspotAddress: address
+        });
+    }
+    handleUserNameEntry (username) {
+        this.setState({
+            phase: PHASES.addressEntry,
+            playspotUserName: username
+        });
+    }
+    handlePasswordEntry (password) {
+        this.setState({
+            phase: PHASES.addressEntry,
+            playspotPassword: password
+        });
+    }
+    handleConnecting () {
+        this.props.vm.connectPeripheral(
+            this.props.extensionId,
+            this.state.playspotAddress,
+            this.state.playspotUserName,
+            this.state.playspotPassword
+        );
         this.setState({
             phase: PHASES.connecting
         });
@@ -95,6 +130,7 @@ class ConnectionModal extends React.Component {
             action: 'connected',
             label: this.props.extensionId
         });
+        this.props.vm.extensionManager.refreshBlocks();
     }
     handleHelp () {
         window.open(this.state.extension.helpLink, '_blank');
@@ -123,6 +159,12 @@ class ConnectionModal extends React.Component {
                 onDisconnect={this.handleDisconnect}
                 onHelp={this.handleHelp}
                 onScanning={this.handleScanning}
+                onUpdatePlayspotAddress={this.handleAddressEntry}
+                onUpdatePlayspotUserName={this.handleUserNameEntry}
+                onUpdatePlayspotPassword={this.handlePasswordEntry}
+                playspotAddress={this.state.playspotAddress}
+                playspotUserName={this.state.playspotUserName}
+                playspotPassword={this.state.playspotPassword}
             />
         );
     }
@@ -135,7 +177,10 @@ ConnectionModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    extensionId: state.scratchGui.connectionModal.extensionId
+    extensionId: state.scratchGui.connectionModal.extensionId,
+    playspotAddress: state.playspotAddress,
+    playspotUserName: state.playspotUserName,
+    playspotPassword: state.playspotPassword
 });
 
 const mapDispatchToProps = dispatch => ({
