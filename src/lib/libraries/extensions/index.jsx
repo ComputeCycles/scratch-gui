@@ -176,7 +176,7 @@ export default [
     },
     {
         name: 'PlaySpots',
-        extensionId: 'PlaySpots',
+        extensionId: 'playspot',
         collaborator: 'ComputeCycles',
         iconURL: playspotsImage,
         insetIconURL: playspotsInsetImage,
@@ -206,7 +206,7 @@ export default [
     },
     {
         name: 'PlaySpots Setup',
-        extensionId: 'PlaySpotsSetup',
+        extensionId: 'playspotsSetup',
         collaborator: 'ComputeCycles',
         iconURL: playspotsImage,
         insetIconURL: playspotsInsetImage,
