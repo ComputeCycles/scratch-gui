@@ -36,7 +36,7 @@ class ConnectionModal extends React.Component {
     componentDidMount () {
         this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
-        if (this.props.extensionId === 'playspot' || 'sequence' || 'playspotSetup') {
+        if (this.props.extensionId === 'playspot' || 'sequence' || 'playspotsSetup') {
             this.handleAddressEntry('localhost');
             this.handleUserNameEntry(null);
             this.handlePasswordEntry(null);
