@@ -1,10 +1,8 @@
-/* eslint-disable linebreak-style */
 import React from 'react';
 import {connect} from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 const decoder = new TextDecoder();
-// import SoundFiles from '../lib/soundFiles';
-// eslint-disable-next-line linebreak-style
+import SoundFiles from '../lib/soundFiles';
 
 import {
     openMQTTModal,
@@ -49,24 +47,24 @@ class MQTTButton extends React.Component {
         //     })
         // });
 
-        this.props.vm.runtime.on('PLAY_SOUND_MQTT', data => {
-            this.playSoundMQTT(data);
-        });
-        this.props.vm.runtime.on('STOP_SEQUENCE', () => {
-            this.stopSequences();
-        });
-        this.props.vm.runtime.on('STOP_SEQUENCE_1', () => {
-            this.stopSequences1();
-        });
-        this.props.vm.runtime.on('STOP_SEQUENCE_2', () => {
-            this.stopSequences1();
-        });
-        this.props.vm.runtime.on('STOP_SEQUENCE_3', () => {
-            this.stopSequences1();
-        });
-        this.props.vm.runtime.on('STOP_SEQUENCE_4', () => {
-            this.stopSequences1();
-        });
+        // this.props.vm.runtime.on('PLAY_SOUND_MQTT', data => {
+        //     this.playSoundMQTT(data);
+        // });
+        // this.props.vm.runtime.on('STOP_SEQUENCE', () => {
+        //     this.stopSequences();
+        // });
+        // this.props.vm.runtime.on('STOP_SEQUENCE_1', () => {
+        //     this.stopSequences1();
+        // });
+        // this.props.vm.runtime.on('STOP_SEQUENCE_2', () => {
+        //     this.stopSequences1();
+        // });
+        // this.props.vm.runtime.on('STOP_SEQUENCE_3', () => {
+        //     this.stopSequences1();
+        // });
+        // this.props.vm.runtime.on('STOP_SEQUENCE_4', () => {
+        //     this.stopSequences1();
+        // });
     }
 
 
@@ -478,7 +476,7 @@ class MQTTButton extends React.Component {
         const splitForLoopNum = splitArgs[0].split(':');
         (splitForLoopNum[1].trim() === '-1') ? loopAmount = 100 : loopAmount = splitForLoopNum[1].trim();
         // const sat = require(`!raw-loader!../import/SatelliteFiles/${splitArgs[1]}`);
-        const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
+        // const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
         const split = sat.default.split('\n');
         const filtered = split.filter(e => e === 0 || e);
         seq = filtered.join(',');
@@ -593,7 +591,7 @@ class MQTTButton extends React.Component {
         console.log(splitForLoopNum, 'from displaySequence2');
         (splitForLoopNum[1].trim() === '-1') ? loopAmount = 100 : loopAmount = splitForLoopNum[1].trim();
         // const sat = require(`!raw-loader!../import/SatelliteFiles/${splitArgs[1]}`);
-        const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
+        // const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
         const split = sat.default.split('\n');
         const filtered = split.filter(e => e === 0 || e);
         seq = filtered.join(',');
@@ -708,7 +706,7 @@ class MQTTButton extends React.Component {
         const splitForLoopNum = splitArgs[0].split(':');
         (splitForLoopNum[1].trim() === '-1') ? loopAmount = 100 : loopAmount = splitForLoopNum[1].trim();
         // const sat = require(`!raw-loader!../import/SatelliteFiles/${splitArgs[1]}`);
-        const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
+        // const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
         const split = sat.default.split('\n');
         const filtered = split.filter(e => e === 0 || e);
         seq = filtered.join(',');
@@ -823,7 +821,7 @@ class MQTTButton extends React.Component {
         const splitForLoopNum = splitArgs[0].split(':');
         (splitForLoopNum[1].trim() === '-1') ? loopAmount = 100 : loopAmount = splitForLoopNum[1].trim();
         // const sat = require(`!raw-loader!../import/SatelliteFiles/${splitArgs[1]}`);
-        const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
+        // const sat = require(`!raw-loader!../sequences/${splitArgs[1]}`);
         const split = sat.default.split('\n');
         const filtered = split.filter(e => e === 0 || e);
         seq = filtered.join(',');
@@ -944,7 +942,7 @@ class MQTTButton extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    pixelType: state.pixels.pixelType,
+    // pixelType: state.pixels.pixelType,
     client: state.client.mqttClient,
     satOneName: state.satNames.satelliteOne,
     satTwoName: state.satNames.satelliteTwo,

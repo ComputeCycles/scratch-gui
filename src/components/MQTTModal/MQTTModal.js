@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-indent */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-no-literals */
-/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable linebreak-style */
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
@@ -8,7 +8,7 @@ import {
     closeMQTTModal
 } from '../../reducers/mqttModal';
 import {setMQTTClient} from '../../reducers/client';
-import {setCurrentMQTTStatus} from '../../reducers/mqttStatus';
+import {setMQTTStatus} from '../../reducers/mqttStatus';
 import {
     setFirstSatellite,
     setSecondSatellite,
@@ -105,6 +105,7 @@ const MQTTModal = props => {
 
   
     return (
+        // eslint-disable-next-line react/jsx-filename-extension
         <Modal
             show={props.showModal}
             onHide={handleClose}
@@ -158,7 +159,7 @@ const MQTTModal = props => {
                     className="mr-auto"
                     onClick={handleClose}
                 >
-                Close
+            Close
                 </Button>
                 {/* </div> */}
                 {
@@ -221,7 +222,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(closeMQTTModal()),
     setClient: client => dispatch(setMQTTClient(client)),
-    setMQTTStatus: status => dispatch(setCurrentMQTTStatus(status)),
+    setMQTTStatus: status => dispatch(setMQTTStatus(status)),
     setFirstSatName: value => dispatch(setFirstSatellite(value)),
     setSecondSatName: value => dispatch(setSecondSatellite(value)),
     setThirdSatName: value => dispatch(setThirdSatellite(value)),

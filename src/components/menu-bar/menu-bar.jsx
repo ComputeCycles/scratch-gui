@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import bindAll from 'lodash.bindall';
 import bowser from 'bowser';
 import React from 'react';
+import {openConnectionModal} from '../../reducers/modals';
+import {setConnectionModalExtensionId} from '../../reducers/connection-modal';
 
 import VM from 'scratch-vm';
 
@@ -171,7 +173,8 @@ class MenuBar extends React.Component {
             'handleLanguageMouseUp',
             'handleRestoreOption',
             'getSaveToComputerHandler',
-            'restoreOptionMessage'
+            'restoreOptionMessage',
+            'handleMqttConnect'
         ]);
     }
     componentDidMount () {
@@ -257,7 +260,7 @@ class MenuBar extends React.Component {
         }
     }
     handleMqttConnect () {
-        console.log('connect to MQTT');
+        this.props.onClickMqtt('playspot');
     }
     restoreOptionMessage (deletedItem) {
         switch (deletedItem) {
@@ -497,7 +500,7 @@ class MenuBar extends React.Component {
                             className={classNames(styles.menuBarItem, styles.hoverable)}
                             onMouseUp={this.handleMqttConnect}
                         >
-                            <MQTTButton />
+                            <MQTTButton vm={this.props.vm} />
                         </div>
                     </div>
                     <Divider className={classNames(styles.divider)} />
@@ -781,7 +784,9 @@ MenuBar.propTypes = {
     showComingSoon: PropTypes.bool,
     userOwnsProject: PropTypes.bool,
     username: PropTypes.string,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    onOpenConnectionModal: PropTypes.func,
+    onClickMqtt: PropTypes.func
 };
 
 MenuBar.defaultProps = {
@@ -829,7 +834,10 @@ const mapDispatchToProps = dispatch => ({
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
     onSeeCommunity: () => dispatch(setPlayer(true)),
-    onClickMqtt: () => dispatch(openMQTTMenu())
+    onClickMqtt: id => {
+        dispatch(setConnectionModalExtensionId(id));
+        dispatch(openConnectionModal());
+    }
 });
 
 export default compose(

@@ -1,5 +1,4 @@
-/* eslint-disable linebreak-style */
-const SET_MQTT_STATUS = 'setCurrentMQTTStatus';
+const SET_MQTT_STATUS = 'setMQTTStatus';
 
 const MQTT_STATUS = 'mqttStatus';
 
@@ -19,7 +18,7 @@ const reducer = function (state, action) {
     }
 };
 
-const setCurrentMQTTStatus = function (status) {
+const setMQTTStatus = function (status) {
     return {
         type: SET_MQTT_STATUS,
         status: status
@@ -28,5 +27,5 @@ const setCurrentMQTTStatus = function (status) {
 export {
     reducer as default,
     initialState as modalsInitialState,
-    setCurrentMQTTStatus
+    setMQTTStatus
 };

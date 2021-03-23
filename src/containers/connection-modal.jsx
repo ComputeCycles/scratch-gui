@@ -70,6 +70,7 @@ class ConnectionModal extends React.Component {
         });
     }
     handleConnecting () {
+        console.log(this.props.extensionId, 'handleConnecting');
         this.props.vm.connectPeripheral(
             this.props.extensionId,
             this.state.playspotAddress,
