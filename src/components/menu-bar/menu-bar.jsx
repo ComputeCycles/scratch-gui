@@ -29,6 +29,7 @@ import SB3Downloader from '../../containers/sb3-downloader.jsx';
 import DeletionRestorer from '../../containers/deletion-restorer.jsx';
 import TurboMode from '../../containers/turbo-mode.jsx';
 import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
+import MQTTButton from '../../containers/mqttControl';
 
 import {openTipsLibrary} from '../../reducers/modals';
 import {setPlayer} from '../../reducers/mode';
@@ -56,7 +57,8 @@ import {
     languageMenuOpen,
     openLoginMenu,
     closeLoginMenu,
-    loginMenuOpen
+    loginMenuOpen,
+    openMQTTMenu
 } from '../../reducers/menus';
 
 import collectMetadata from '../../lib/collect-metadata';
@@ -253,6 +255,9 @@ class MenuBar extends React.Component {
         if (!this.props.languageMenuOpen) {
             this.props.onClickLanguage(e);
         }
+    }
+    handleMqttConnect () {
+        console.log('connect to MQTT');
     }
     restoreOptionMessage (deletedItem) {
         switch (deletedItem) {
@@ -487,6 +492,12 @@ class MenuBar extends React.Component {
                                     )}</TurboMode>
                                 </MenuSection>
                             </MenuBarMenu>
+                        </div>
+                        <div
+                            className={classNames(styles.menuBarItem, styles.hoverable)}
+                            onMouseUp={this.handleMqttConnect}
+                        >
+                            <MQTTButton />
                         </div>
                     </div>
                     <Divider className={classNames(styles.divider)} />
@@ -817,7 +828,8 @@ const mapDispatchToProps = dispatch => ({
     onClickRemix: () => dispatch(remixProject()),
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
-    onSeeCommunity: () => dispatch(setPlayer(true))
+    onSeeCommunity: () => dispatch(setPlayer(true)),
+    onClickMqtt: () => dispatch(openMQTTMenu())
 });
 
 export default compose(

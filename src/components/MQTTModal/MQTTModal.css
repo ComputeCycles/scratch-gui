@@ -1,0 +1,67 @@
+.modal {
+  background-color:white;
+  width: 40em;
+  height: 20em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.modalTitle {
+  color: black;
+}
+
+.closeButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.addressContainer {
+  display: flex;
+  justify-content: center ;
+  margin-top: 1em;
+}
+
+.usernameContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.passwordContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.badge {
+  height: 5em;
+  width: 5em;
+}
+
+/* .closeButton {
+  display: flex;
+  justify-content: flex-start;
+} */
+
+.variantMessage {
+  display: flex;
+  justify-content: center;
+}
+
+.messageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+

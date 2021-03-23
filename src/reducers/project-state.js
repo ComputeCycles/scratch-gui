@@ -504,6 +504,13 @@ const remixProject = () => ({
     type: START_REMIXING
 });
 
+const setProjectRunState = state => {
+    return {
+        type: PROJECT_RUN_STATE,
+        state: state
+    };
+};
+
 export {
     reducer as default,
     initialState as projectStateInitialState,
@@ -537,5 +544,6 @@ export {
     requestNewProject,
     requestProjectUpload,
     saveProjectAsCopy,
-    setProjectId
+    setProjectId,
+    setProjectRunState
 };
