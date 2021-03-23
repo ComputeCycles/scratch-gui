@@ -99,10 +99,14 @@ class Blocks extends React.Component {
         this.props.vm.addWorkspace(this.workspace);
        
 
+        console.log(this.props.toolboxXML);
+        
         // Register buttons under new callback keys for creating variables,
         // lists, and procedures from extensions.
 
         const toolboxWorkspace = this.workspace.getFlyout().getWorkspace();
+
+        console.log(toolboxWorkspace, 'toolboxWorkspace');
 
         const varListButtonCallback = type =>
             (() => this.ScratchBlocks.Variables.createVariable(this.workspace, null, type));
