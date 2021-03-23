@@ -337,6 +337,32 @@ const sound = function (isStage, targetId, soundName) {
             </value>
         </block>
         <block id="${targetId}_volume" type="sound_volume"/>
+        <block type="sound_playSoundFromMQTT">
+            <value name="SOUND">
+            <shadow type="text">
+               <field name="TEXT">Sound</field>
+            </shadow>
+            </value>
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+        </block>
+        <block type="sound_playSound">
+            <value name="SOUND">
+                <shadow type="text">
+                <field name="TEXT">Sound Name</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="sound_setVolume" id="sound_setVolume">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
         ${categorySeparator}
     </category>
     `;
@@ -376,6 +402,7 @@ const events = function (isStage) {
               <shadow type="event_broadcast_menu"></shadow>
             </value>
         </block>
+        <block type="event_resetGame"></block>
         ${categorySeparator}
     </category>
     `;
@@ -710,6 +737,247 @@ const myBlocks = function () {
     `;
 };
 
+const gameControl = function () {
+    return `
+    <category 
+        name="Game Control"
+        id="countdownGame"
+        colour="#CF173B"
+        secondaryColour="#900C3F" 
+        showStatusButton="false">
+            <block type="countdown_gameMode" id="countdown_gameMode"></block>'
+            <block type="countdown_gameModeCheck" id="countdown_gameModeCheck"></block>
+    </category>
+    `;
+};
+
+const display = function () {
+    return `
+    <category 
+        name="Display Control"
+        id="display"
+        colour="#17C1CF"
+        secondaryColour="#1D7B83" 
+        showStatusButton="false">
+            <block type="display_image" id="display_image"></block>
+            <block type="display_animateImage" id="display_animateImage"></block>
+            <block type="display_fillImage" id="display_fillImage">
+                <value name="BEGIN">
+                    <shadow type="text">
+                        <field name="TEXT">begin</field>
+                    </shadow>
+                </value>
+                <value name="END">
+                    <shadow type="text">
+                        <field name="TEXT">end</field>
+                    </shadow>
+                </value>
+                <value name="RED">
+                    <shadow type="text">
+                        <field name="TEXT">red</field>
+                    </shadow>
+                </value>
+                <value name="GREEN">
+                    <shadow type="text">
+                        <field name="TEXT">green</field>
+                    </shadow>
+                </value>
+                <value name="BLUE">
+                    <shadow type="text">
+                        <field name="TEXT">blue</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="display_displayHistogram" id="display_displayHistogram">
+                <value name="RED">
+                    <shadow type="text">
+                        <field name="TEXT">red</field>
+                    </shadow>
+                </value>
+                <value name="GREEN">
+                    <shadow type="text">
+                        <field name="TEXT">green</field>
+                    </shadow>
+                </value>
+                <value name="BLUE">
+                    <shadow type="text">
+                        <field name="TEXT">blue</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+    `;
+};
+
+const lights = function () {
+    return `
+    '<category
+        name="Lights"
+        id="lights"
+        colour="#3399ff"
+        secondaryColour="#1556E1"
+        showStatusButton="false">
+            <block type="lights_startsequence">
+                <value name="VALUE">
+                    <shadow type="text">
+                        <field name="TEXT">File Name</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="lights_sendMessage">
+                <value name="VALUE">
+                    <shadow type="text">
+                        <field name="TEXT">sequence</field>
+                    </shadow>
+                </value>
+                <value name="SATELLITE">
+                    <shadow type="text">
+                        <field name="TEXT">Satellite #</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+    `;
+};
+
+const messages = function () {
+    return `
+    <category
+        name="Messages"
+        id="messages"
+        colour="#008080"
+        secondaryColour="#008080"
+        showStatusButton="false">
+      <block type="message_sendGameMQTT">
+      <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">value</field>
+        </shadow>
+        </value>
+        <value name="TOPIC">
+          <shadow type="text">
+            <field name="TEXT">topic</field>
+        </shadow>
+        </value>
+      </block>
+      <block type="message_receiveGameMQTT">
+      <value name="TOPIC">
+          <shadow type="text">
+            <field name="TEXT">topic</field>
+        </shadow>
+        </value>
+      </block>
+      <block type="message_waitUntilBroadcast">
+        <value name="TOPIC">
+          <shadow type="text">
+            <field name="TEXT">topic</field>
+        </shadow>
+        </value>
+      </block>
+    </category>   
+    `;
+};
+
+const movement = function () {
+    return `
+    <category
+        name="Movement"
+        id="movement"
+        colour="#6666ff"
+        secondaryColour="#2323B2"
+        showStatusButton="false">
+        <block type="movement_waitUntilSatSensing"></block>
+        <block type="movement_whenAnyPresenceSensed">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
+        <block type="movement_arePresencesSensed">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
+    </category>
+    `;
+};
+
+const touch = function () {
+    return `
+    <category
+        name="Touch"
+        id="touch"
+        colour="#ff6699"
+        secondaryColour="#AB1D4C"
+        howStatusButton="false">
+        <block type="touch_waitUntilSatTouched"></block>
+        <block type="touch_whenAnySatTouched">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
+        <block type="touch_isTouched">
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellites</field>
+            </shadow>
+            </value>
+        </block>
+        </category>
+    `;
+};
+
+const virtualsat = function () {
+    return `
+    <category
+        name="Device Control"
+        id="virtualSat"
+        colour="#118000"
+        secondaryColour="#13520A"
+        showStatusButton="true">
+        <block type="virtualsat_addNewVirtualSat">
+            <value name="VALUE">
+            <shadow type="text">
+                <field name="TEXT">Name</field>
+            </shadow>
+            </value>
+        </block>
+        <block type="virtualsat_stopEvent">
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+        </block>
+        <block type="virtualsat_setRadarSensitivities" id="virtualsat_setRadarSensitivities">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
+        <block type="virtualsat_cycleSatellitePower"></block>
+        <block type="virtualsat_rebootSatellite">
+        <value name="SATELLITE">
+        <shadow type="text">
+            <field name="TEXT">satellite</field>
+        </shadow>
+        </value>
+        </block>
+  </category>
+  `;
+};
+
 const xmlOpen = '<xml style="display: none">';
 const xmlClose = '</xml>';
 
@@ -750,8 +1018,16 @@ const makeToolboxXML = function (isStage, targetId, categoriesXML = [],
     const controlXML = moveCategory('control') || control(isStage, targetId);
     const sensingXML = moveCategory('sensing') || sensing(isStage, targetId);
     const operatorsXML = moveCategory('operators') || operators(isStage, targetId);
+    const gameControlXML = moveCategory('gameControl') || gameControl(isStage, targetId);
+    const displayXML = moveCategory('display') || display(isStage, targetId);
+    const lightsXML = moveCategory('lights') || lights(isStage, targetId);
+    const messagesXML = moveCategory('messages') || messages(isStage, targetId);
+    const movementXML = moveCategory('movement') || movement(isStage, targetId);
+    const touchXML = moveCategory('touch') || touch(isStage, targetId);
+    const virtualsatXML = moveCategory('virtualsat') || virtualsat(isStage, targetId);
     const variablesXML = moveCategory('data') || variables(isStage, targetId);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isStage, targetId);
+
 
     const everything = [
         xmlOpen,
@@ -762,6 +1038,13 @@ const makeToolboxXML = function (isStage, targetId, categoriesXML = [],
         controlXML, gap,
         sensingXML, gap,
         operatorsXML, gap,
+        gameControlXML, gap,
+        displayXML, gap,
+        lightsXML, gap,
+        messagesXML, gap,
+        movementXML, gap,
+        touchXML, gap,
+        virtualsatXML, gap,
         variablesXML, gap,
         myBlocksXML
     ];
