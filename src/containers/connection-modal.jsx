@@ -27,14 +27,14 @@ class ConnectionModal extends React.Component {
         const extension = extensionData.find(ext => ext.extensionId === props.extensionId);
         this.state = {
             extension: extension,
-            phase: props.vm.getPeripheralIsConnected(props.extensionId) ? PHASES.connected : PHASES.scanning,
+            phase: props.vm.getClient() ? PHASES.connected : PHASES.scanning,
             playspotAddress: 'localhost',
             playspotUserName: null,
             playspotPassword: null
         };
     }
     componentDidMount () {
-        this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
+        this.props.vm.runtime.on('CLIENT_CONNECTED', this.handleConnected);
         this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
         if (this.props.extensionId === 'playspot' || 'sequence' || 'playspotsSetup') {
             this.handleAddressEntry('localhost');
@@ -43,7 +43,7 @@ class ConnectionModal extends React.Component {
         }
     }
     componentWillUnmount () {
-        this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleConnected);
+        this.props.vm.removeListener('CLIENT_CONNECTED', this.handleConnected);
         this.props.vm.removeListener('PERIPHERAL_REQUEST_ERROR', this.handleError);
     }
     handleScanning () {
@@ -70,16 +70,15 @@ class ConnectionModal extends React.Component {
         });
     }
     handleConnecting () {
-        console.log(this.props.extensionId, 'handleConnecting');
-        this.props.vm.connectPeripheral(
+        this.setState({
+            phase: PHASES.connecting
+        });
+        this.props.vm.connectMqtt(
             this.props.extensionId,
             this.state.playspotAddress,
             this.state.playspotUserName,
             this.state.playspotPassword
         );
-        this.setState({
-            phase: PHASES.connecting
-        });
         analytics.event({
             category: 'extensions',
             action: 'connecting',
@@ -123,6 +122,7 @@ class ConnectionModal extends React.Component {
         }
     }
     handleConnected () {
+        console.log('handleConnected fired');
         this.setState({
             phase: PHASES.connected
         });
