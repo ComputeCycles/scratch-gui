@@ -31,7 +31,6 @@ import SB3Downloader from '../../containers/sb3-downloader.jsx';
 import DeletionRestorer from '../../containers/deletion-restorer.jsx';
 import TurboMode from '../../containers/turbo-mode.jsx';
 import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
-import MQTTButton from '../../containers/mqttControl';
 
 import {openTipsLibrary} from '../../reducers/modals';
 import {setPlayer} from '../../reducers/mode';
@@ -500,7 +499,7 @@ class MenuBar extends React.Component {
                             className={classNames(styles.menuBarItem, styles.hoverable)}
                             onMouseUp={this.handleMqttConnect}
                         >
-                            <MQTTButton vm={this.props.vm} />
+                            <div>MQTT Connect</div>
                         </div>
                     </div>
                     <Divider className={classNames(styles.divider)} />
