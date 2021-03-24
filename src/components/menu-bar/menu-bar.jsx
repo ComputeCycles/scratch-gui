@@ -58,8 +58,7 @@ import {
     languageMenuOpen,
     openLoginMenu,
     closeLoginMenu,
-    loginMenuOpen,
-    openMQTTMenu
+    loginMenuOpen
 } from '../../reducers/menus';
 
 import collectMetadata from '../../lib/collect-metadata';
@@ -173,14 +172,29 @@ class MenuBar extends React.Component {
             'handleRestoreOption',
             'getSaveToComputerHandler',
             'restoreOptionMessage',
-            'handleMqttConnect'
+            'handleMqttConnect',
+            'handleClientChange',
+            'handleClientDisconnect'
         ]);
+
+        this.state = {
+            client: this.props.vm.getClient(),
+            connected: false
+        };
     }
     componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
+        this.props.vm.runtime.on('CLIENT_CONNECTED', this.handleClientChange);
+        this.props.vm.runtime.on('CLIENT_DISCONNECTED', this.handleClientDisconnect);
     }
     componentWillUnmount () {
         document.removeEventListener('keydown', this.handleKeyPress);
+    }
+    handleClientChange () {
+        this.setState({connected: true});
+    }
+    handleClientDisconnect () {
+        this.setState({connected: false});
     }
     handleClickNew () {
         // if the project is dirty, and user owns the project, we will autosave.
@@ -501,6 +515,10 @@ class MenuBar extends React.Component {
                         >
                             <div>MQTT Connect</div>
                         </div>
+                    </div>
+                    <div>
+                        {this.state.connected ? (<div className={classNames(styles.connectedLight)} />) :
+                            (<div className={classNames(styles.disconnectedLight)} />)}
                     </div>
                     <Divider className={classNames(styles.divider)} />
                     <div
