@@ -350,13 +350,6 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
             </shadow>
             </value>
         </block>
-        <block type="sound_playSound">
-            <value name="SOUND">
-                <shadow type="text">
-                <field name="TEXT">Sound Name</field>
-                </shadow>
-            </value>
-        </block>
         <block type="sound_setVolume" id="sound_setVolume">
         <value name="SATELLITE">
             <shadow type="text">
@@ -823,13 +816,6 @@ const lights = function () {
         colour="#3399ff"
         secondaryColour="#1556E1"
         showStatusButton="false">
-            <block type="lights_startsequence">
-                <value name="VALUE">
-                    <shadow type="text">
-                        <field name="TEXT">File Name</field>
-                    </shadow>
-                </value>
-            </block>
             <block type="lights_sendMessage">
                 <value name="VALUE">
                     <shadow type="text">
@@ -946,13 +932,6 @@ const virtualsat = function () {
         colour="#118000"
         secondaryColour="#13520A"
         showStatusButton="true">
-        <block type="virtualsat_addNewVirtualSat">
-            <value name="VALUE">
-            <shadow type="text">
-                <field name="TEXT">Name</field>
-            </shadow>
-            </value>
-        </block>
         <block type="virtualsat_stopEvent">
             <value name="SATELLITE">
             <shadow type="text">
