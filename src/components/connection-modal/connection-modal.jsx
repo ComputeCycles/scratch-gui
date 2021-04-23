@@ -5,8 +5,6 @@ import keyMirror from 'keymirror';
 import Box from '../box/box.jsx';
 import Modal from '../../containers/modal.jsx';
 
-import ScanningStep from '../../containers/scanning-step.jsx';
-import AutoScanningStep from '../../containers/auto-scanning-step.jsx';
 import ConnectingStep from './connecting-step.jsx';
 import ConnectedStep from './connected-step.jsx';
 import ErrorStep from './error-step.jsx';
@@ -36,8 +34,6 @@ const ConnectionModalComponent = props => (
     >
         <Box className={styles.body}>
             {props.phase === PHASES.addressEntry && <AddressEntryStep {...props} />}
-            {props.phase === PHASES.scanning && !props.useAutoScan && <ScanningStep {...props} />}
-            {props.phase === PHASES.scanning && props.useAutoScan && <AutoScanningStep {...props} />}
             {props.phase === PHASES.connecting && <ConnectingStep {...props} />}
             {props.phase === PHASES.connected && <ConnectedStep {...props} />}
             {props.phase === PHASES.error && <ErrorStep {...props} />}

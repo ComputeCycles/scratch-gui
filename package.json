@@ -50,15 +50,18 @@
     "lodash.omit": "4.5.0",
     "lodash.throttle": "4.0.1",
     "minilog": "3.1.0",
+    "mqtt": "^4.2.6",
+    "nan": "^2.14.2",
     "omggif": "1.0.9",
     "papaparse": "5.1.1",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-simple-vars": "^5.0.1",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.7.2",
     "query-string": "^5.1.1",
     "raw-loader": "^0.5.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.5.2",
     "react-contextmenu": "2.9.4",
     "react-dom": "^16.13.1",
     "react-draggable": "3.0.5",
@@ -118,6 +121,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^21.0.0",
     "jest-junit": "^7.0.0",
+    "link": "^0.1.5",
     "mkdirp": "^1.0.3",
     "raf": "^3.4.0",
     "react-test-renderer": "16.2.0",
@@ -128,7 +132,8 @@
     "web-audio-test-api": "^0.5.2",
     "webpack": "^4.6.0",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.3"
+    "webpack-dev-server": "^3.11.2",
+    "xhr": "2.5.0"
   },
   "jest": {
     "setupFiles": [

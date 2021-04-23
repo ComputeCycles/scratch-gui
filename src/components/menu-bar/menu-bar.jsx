@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import bindAll from 'lodash.bindall';
 import bowser from 'bowser';
 import React from 'react';
+import {openConnectionModal} from '../../reducers/modals';
+import {setConnectionModalExtensionId} from '../../reducers/connection-modal';
 
 import VM from 'scratch-vm';
 
@@ -169,14 +171,30 @@ class MenuBar extends React.Component {
             'handleLanguageMouseUp',
             'handleRestoreOption',
             'getSaveToComputerHandler',
-            'restoreOptionMessage'
+            'restoreOptionMessage',
+            'handleMqttConnect',
+            'handleClientChange',
+            'handleClientDisconnect'
         ]);
+
+        this.state = {
+            client: this.props.vm.getClient(),
+            connected: false
+        };
     }
     componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
+        this.props.vm.runtime.on('CLIENT_CONNECTED', this.handleClientChange);
+        this.props.vm.runtime.on('CLIENT_DISCONNECTED', this.handleClientDisconnect);
     }
     componentWillUnmount () {
         document.removeEventListener('keydown', this.handleKeyPress);
+    }
+    handleClientChange () {
+        this.setState({connected: true});
+    }
+    handleClientDisconnect () {
+        this.setState({connected: false});
     }
     handleClickNew () {
         // if the project is dirty, and user owns the project, we will autosave.
@@ -253,6 +271,9 @@ class MenuBar extends React.Component {
         if (!this.props.languageMenuOpen) {
             this.props.onClickLanguage(e);
         }
+    }
+    handleMqttConnect () {
+        this.props.onClickMqtt('playspot');
     }
     restoreOptionMessage (deletedItem) {
         switch (deletedItem) {
@@ -488,6 +509,16 @@ class MenuBar extends React.Component {
                                 </MenuSection>
                             </MenuBarMenu>
                         </div>
+                        <div
+                            className={classNames(styles.menuBarItem, styles.hoverable)}
+                            onMouseUp={this.handleMqttConnect}
+                        >
+                            <div>MQTT Connect</div>
+                        </div>
+                    </div>
+                    <div>
+                        {this.state.connected ? (<div className={classNames(styles.connectedLight)} />) :
+                            (<div className={classNames(styles.disconnectedLight)} />)}
                     </div>
                     <Divider className={classNames(styles.divider)} />
                     <div
@@ -770,7 +801,9 @@ MenuBar.propTypes = {
     showComingSoon: PropTypes.bool,
     userOwnsProject: PropTypes.bool,
     username: PropTypes.string,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    onOpenConnectionModal: PropTypes.func,
+    onClickMqtt: PropTypes.func
 };
 
 MenuBar.defaultProps = {
@@ -817,7 +850,11 @@ const mapDispatchToProps = dispatch => ({
     onClickRemix: () => dispatch(remixProject()),
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
-    onSeeCommunity: () => dispatch(setPlayer(true))
+    onSeeCommunity: () => dispatch(setPlayer(true)),
+    onClickMqtt: id => {
+        dispatch(setConnectionModalExtensionId(id));
+        dispatch(openConnectionModal());
+    }
 });
 
 export default compose(

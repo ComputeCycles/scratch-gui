@@ -31,6 +31,22 @@
     color: $ui-white;
 }
 
+.disconnectedLight {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: white 1px solid;
+}
+
+.connectedLight {
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: white 1px solid;
+}
+
 .main-menu {
     display: flex;
     flex-direction: row;
