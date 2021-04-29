@@ -865,7 +865,12 @@ const messages = function () {
         </shadow>
         </value>
       </block>
-      <block type="message_resetgame"></block>
+      <block type="message_resetThread">
+      <value name="TOPIC">
+          <shadow type="text">
+            <field name="TEXT">topic</field>
+        </shadow>
+        </value></block>
     </category>
     `;
 };
