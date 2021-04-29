@@ -142,11 +142,11 @@ const motion = function (isInitialSetup, isStage, targetId) {
 const xmlEscape = function (unsafe) {
     return unsafe.replace(/[<>&'"]/g, c => {
         switch (c) {
-        case '<': return '&lt;';
-        case '>': return '&gt;';
-        case '&': return '&amp;';
-        case '\'': return '&apos;';
-        case '"': return '&quot;';
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
         }
     });
 };
@@ -868,9 +868,9 @@ const messages = function () {
       <block type="message_resetThread">
       <value name="TOPIC">
           <shadow type="text">
-            <field name="TEXT">topic</field>
         </shadow>
-        </value></block>
+        </value>
+        </block>
     </category>
     `;
 };
