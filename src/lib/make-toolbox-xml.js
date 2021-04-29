@@ -396,7 +396,6 @@ const events = function (isInitialSetup, isStage) {
               <shadow type="event_broadcast_menu"></shadow>
             </value>
         </block>
-        <block type="event_resetGame"></block>
         ${categorySeparator}
     </category>
     `;
@@ -866,7 +865,8 @@ const messages = function () {
         </shadow>
         </value>
       </block>
-    </category>   
+      <block type="message_resetgame"></block>
+    </category>
     `;
 };
 
