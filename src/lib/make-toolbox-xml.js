@@ -6,7 +6,7 @@ const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
 /* eslint-disable no-unused-vars */
 const motion = function (isInitialSetup, isStage, targetId) {
-debugger
+// debugger
     const stageSelected = ScratchBlocks.ScratchMsgs.translate(
         'MOTION_STAGE_SELECTED',
         'Stage selected: no motion blocks'
