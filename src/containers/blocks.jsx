@@ -99,14 +99,14 @@ class Blocks extends React.Component {
         this.props.vm.addWorkspace(this.workspace);
        
 
-        console.log(this.props.toolboxXML);
+        // console.log(this.props.toolboxXML);
         
         // Register buttons under new callback keys for creating variables,
         // lists, and procedures from extensions.
 
         const toolboxWorkspace = this.workspace.getFlyout().getWorkspace();
 
-        console.log(toolboxWorkspace, 'toolboxWorkspace');
+        // console.log(toolboxWorkspace, 'toolboxWorkspace');
 
         const varListButtonCallback = type =>
             (() => this.ScratchBlocks.Variables.createVariable(this.workspace, null, type));
@@ -342,6 +342,7 @@ class Blocks extends React.Component {
         // Use try/catch because this requires digging pretty deep into the VM
         // Code inside intentionally ignores several error situations (no stage, etc.)
         // Because they would get caught by this try/catch
+        // debugger
         try {
             let {editingTarget: target, runtime} = this.props.vm;
             const stage = runtime.getTargetForStage();
