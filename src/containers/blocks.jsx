@@ -346,7 +346,7 @@ class Blocks extends React.Component {
         try {
             let {editingTarget: target, runtime} = this.props.vm;
             const stage = runtime.getTargetForStage();
-            // if (!target) target = stage; // If no editingTarget, use the stage
+            if (!target) target = stage; // If no editingTarget, use the stage
 
             const stageCostumes = stage.getCostumes();
             const targetCostumes = target.getCostumes();
