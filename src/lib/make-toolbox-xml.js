@@ -11,7 +11,6 @@ const motion = function (isInitialSetup, isStage, targetId) {
         'MOTION_STAGE_SELECTED',
         'Stage selected: no motion blocks'
     );
-
     return `
     <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF" secondaryColour="#3373CC">
         ${isStage ? `
