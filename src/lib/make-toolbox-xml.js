@@ -1001,23 +1001,24 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         }
         // return `undefined`
     };
+    // standard scratch blocks
     const motionXML = moveCategory('motion') || motion(isInitialSetup, isStage, targetId);
-    const looksXML = moveCategory('looks') || looks(isStage, targetId, costumeName, backdropName);
-    const soundXML = moveCategory('sound') || sound(isStage, targetId, soundName);
-    const eventsXML = moveCategory('event') || events(isStage, targetId);
-    const controlXML = moveCategory('control') || control(isStage, targetId);
-    const sensingXML = moveCategory('sensing') || sensing(isStage, targetId);
-    const operatorsXML = moveCategory('operators') || operators(isStage, targetId);
+    const looksXML = moveCategory('looks') || looks(isInitialSetup, isStage, targetId, costumeName, backdropName);
+    const soundXML = moveCategory('sound') || sound(isInitialSetup, isStage, targetId, soundName);
+    const eventsXML = moveCategory('event') || events(isInitialSetup, isStage, targetId);
+    const controlXML = moveCategory('control') || control(isInitialSetup, isStage, targetId);
+    const sensingXML = moveCategory('sensing') || sensing(isInitialSetup, isStage, targetId);
+    const operatorsXML = moveCategory('operators') || operators(isInitialSetup, isStage, targetId);
     const gameControlXML = moveCategory('gameControl') || gameControl(isStage, targetId);
+    const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
+    const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
+    // playspot blocks
     const displayXML = moveCategory('display') || display(isStage, targetId);
     const lightsXML = moveCategory('lights') || lights(isStage, targetId);
     const messagesXML = moveCategory('messages') || messages(isStage, targetId);
     const movementXML = moveCategory('movement') || movement(isStage, targetId);
     const touchXML = moveCategory('touch') || touch(isStage, targetId);
     const virtualsatXML = moveCategory('virtualsat') || virtualsat(isStage, targetId);
-    const variablesXML = moveCategory('data') || variables(isStage, targetId);
-    const myBlocksXML = moveCategory('procedures') || myBlocks(isStage, targetId);
-
 
     const everything = [
         xmlOpen,
