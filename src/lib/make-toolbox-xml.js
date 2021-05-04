@@ -5,11 +5,14 @@ const categorySeparator = '<sep gap="36"/>';
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
 /* eslint-disable no-unused-vars */
-const motion = function (isInitialSetup, isStage, targetId) {
+const motion = function (isStage, targetId) {
+    // removed isInitialSetup from params in above line
+debugger
     const stageSelected = ScratchBlocks.ScratchMsgs.translate(
         'MOTION_STAGE_SELECTED',
         'Stage selected: no motion blocks'
     );
+
     return `
     <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF" secondaryColour="#3373CC">
         ${isStage ? `

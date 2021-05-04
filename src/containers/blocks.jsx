@@ -342,10 +342,11 @@ class Blocks extends React.Component {
         // Use try/catch because this requires digging pretty deep into the VM
         // Code inside intentionally ignores several error situations (no stage, etc.)
         // Because they would get caught by this try/catch
+        debugger
         try {
             let {editingTarget: target, runtime} = this.props.vm;
             const stage = runtime.getTargetForStage();
-            if (!target) target = stage; // If no editingTarget, use the stage
+            // if (!target) target = stage; // If no editingTarget, use the stage
 
             const stageCostumes = stage.getCostumes();
             const targetCostumes = target.getCostumes();
@@ -553,6 +554,7 @@ class Blocks extends React.Component {
                     <Prompt
                         defaultValue={this.state.prompt.defaultValue}
                         isStage={vm.runtime.getEditingTarget().isStage}
+                        // Something seems off on the above line. i cannot find an instance of vm.runtime.getEditingTarget()
                         label={this.state.prompt.message}
                         showCloudOption={this.state.prompt.showCloudOption}
                         showVariableOptions={this.state.prompt.showVariableOptions}
