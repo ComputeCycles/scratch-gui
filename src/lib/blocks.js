@@ -74,7 +74,6 @@ export default function (vm) {
     };
 
     const soundsMenu = function () {
-        console.log('vm.editingTarget from soundsMenu function gui/src/lib/blocks.js', vm.editingTarget)
         let menu = [['', '']];
         if (vm.editingTarget && vm.editingTarget.sprite.sounds.length > 0) {
             menu = vm.editingTarget.sprite.sounds.map(sound => [sound.name, sound.name]);

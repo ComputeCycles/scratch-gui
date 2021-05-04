@@ -416,7 +416,7 @@ GUIComponent.propTypes = {
     showComingSoon: PropTypes.bool,
     soundsTabVisible: PropTypes.bool,
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),
-    targetIsStage: false,
+    targetIsStage: PropTypes.bool,
     telemetryModalVisible: PropTypes.bool,
     tipsLibraryVisible: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired

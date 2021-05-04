@@ -5,14 +5,12 @@ const categorySeparator = '<sep gap="36"/>';
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
 /* eslint-disable no-unused-vars */
-const motion = function (isStage, targetId) {
-    // removed isInitialSetup from params in above line
-debugger
+const motion = function (isInitialSetup, isStage, targetId) {
+// debugger
     const stageSelected = ScratchBlocks.ScratchMsgs.translate(
         'MOTION_STAGE_SELECTED',
         'Stage selected: no motion blocks'
     );
-
     return `
     <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF" secondaryColour="#3373CC">
         ${isStage ? `
@@ -868,7 +866,7 @@ const messages = function () {
         </shadow>
         </value>
       </block>
-      <block type="message_resetgame"></block>
+      <block type="message_resetThread"></block>
     </category>
     `;
 };
@@ -1003,23 +1001,24 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         }
         // return `undefined`
     };
-    const motionXML = moveCategory('motion') || motion(isStage, targetId);
-    const looksXML = moveCategory('looks') || looks(isStage, targetId, costumeName, backdropName);
-    const soundXML = moveCategory('sound') || sound(isStage, targetId, soundName);
-    const eventsXML = moveCategory('event') || events(isStage, targetId);
-    const controlXML = moveCategory('control') || control(isStage, targetId);
-    const sensingXML = moveCategory('sensing') || sensing(isStage, targetId);
-    const operatorsXML = moveCategory('operators') || operators(isStage, targetId);
+    // standard scratch blocks
+    const motionXML = moveCategory('motion') || motion(isInitialSetup, isStage, targetId);
+    const looksXML = moveCategory('looks') || looks(isInitialSetup, isStage, targetId, costumeName, backdropName);
+    const soundXML = moveCategory('sound') || sound(isInitialSetup, isStage, targetId, soundName);
+    const eventsXML = moveCategory('event') || events(isInitialSetup, isStage, targetId);
+    const controlXML = moveCategory('control') || control(isInitialSetup, isStage, targetId);
+    const sensingXML = moveCategory('sensing') || sensing(isInitialSetup, isStage, targetId);
+    const operatorsXML = moveCategory('operators') || operators(isInitialSetup, isStage, targetId);
     const gameControlXML = moveCategory('gameControl') || gameControl(isStage, targetId);
+    const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
+    const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
+    // playspot blocks
     const displayXML = moveCategory('display') || display(isStage, targetId);
     const lightsXML = moveCategory('lights') || lights(isStage, targetId);
     const messagesXML = moveCategory('messages') || messages(isStage, targetId);
     const movementXML = moveCategory('movement') || movement(isStage, targetId);
     const touchXML = moveCategory('touch') || touch(isStage, targetId);
     const virtualsatXML = moveCategory('virtualsat') || virtualsat(isStage, targetId);
-    const variablesXML = moveCategory('data') || variables(isStage, targetId);
-    const myBlocksXML = moveCategory('procedures') || myBlocks(isStage, targetId);
-
 
     const everything = [
         xmlOpen,
