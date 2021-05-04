@@ -99,7 +99,7 @@ class Blocks extends React.Component {
         this.props.vm.addWorkspace(this.workspace);
        
 
-        console.log(this.props.toolboxXML);
+        // console.log(this.props.toolboxXML);
         
         // Register buttons under new callback keys for creating variables,
         // lists, and procedures from extensions.
