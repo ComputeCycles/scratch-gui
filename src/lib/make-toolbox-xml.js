@@ -5,8 +5,7 @@ const categorySeparator = '<sep gap="36"/>';
 const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
 /* eslint-disable no-unused-vars */
-const motion = function (isStage, targetId) {
-    // removed isInitialSetup from params in above line
+const motion = function (isInitialSetup, isStage, targetId) {
 debugger
     const stageSelected = ScratchBlocks.ScratchMsgs.translate(
         'MOTION_STAGE_SELECTED',
@@ -1003,7 +1002,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         }
         // return `undefined`
     };
-    const motionXML = moveCategory('motion') || motion(isStage, targetId);
+    const motionXML = moveCategory('motion') || motion(isInitialSetup, isStage, targetId);
     const looksXML = moveCategory('looks') || looks(isStage, targetId, costumeName, backdropName);
     const soundXML = moveCategory('sound') || sound(isStage, targetId, soundName);
     const eventsXML = moveCategory('event') || events(isStage, targetId);
