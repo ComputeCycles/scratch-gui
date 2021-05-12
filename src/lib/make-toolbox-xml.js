@@ -6,7 +6,7 @@ const blockSeparator = '<sep gap="36"/>'; // At default scale, about 28px
 
 /* eslint-disable no-unused-vars */
 const motion = function (isInitialSetup, isStage, targetId) {
-// debugger
+    
     const stageSelected = ScratchBlocks.ScratchMsgs.translate(
         'MOTION_STAGE_SELECTED',
         'Stage selected: no motion blocks'
@@ -143,11 +143,11 @@ const motion = function (isInitialSetup, isStage, targetId) {
 const xmlEscape = function (unsafe) {
     return unsafe.replace(/[<>&'"]/g, c => {
         switch (c) {
-        case '<': return '&lt;';
-        case '>': return '&gt;';
-        case '&': return '&amp;';
-        case '\'': return '&apos;';
-        case '"': return '&quot;';
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
         }
     });
 };
@@ -835,38 +835,55 @@ const lights = function () {
 const messages = function () {
     return `
     <category
-        name="Messages"
-        id="messages"
-        colour="#008080"
-        secondaryColour="#008080"
-        showStatusButton="false">
-      <block type="message_sendGameMQTT">
-      <value name="VALUE">
-          <shadow type="text">
-            <field name="TEXT">value</field>
-        </shadow>
-        </value>
-        <value name="TOPIC">
-          <shadow type="text">
-            <field name="TEXT">topic</field>
-        </shadow>
-        </value>
-      </block>
-      <block type="message_receiveGameMQTT">
-      <value name="TOPIC">
-          <shadow type="text">
-            <field name="TEXT">topic</field>
-        </shadow>
-        </value>
-      </block>
-      <block type="message_waitUntilBroadcast">
-        <value name="TOPIC">
-          <shadow type="text">
-            <field name="TEXT">topic</field>
-        </shadow>
-        </value>
-      </block>
-      <block type="message_resetThread"></block>
+            name="Messages"
+            id="messages"
+            colour="#008080"
+            secondaryColour="#008080"
+            showStatusButton="false">
+        <block type="message_sendGameMQTT">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">value</field>
+                </shadow>
+            </value>
+            <value name="TOPIC">
+                <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="message_receiveGameMQTT">
+            <value name="TOPIC">
+                <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+                </value>
+        </block>
+        <block type="message_waitUntilBroadcast">
+            <value name="TOPIC">
+                <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="message_resetThread">
+        </block>
+        <block type="listen_whenMQTTpubreceived">
+            <value name="TOPIC">
+            <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="message_addSubscription">
+            <value name="TOPIC">
+            <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="message_deleteSubscriptions">
+        </block>
     </category>
     `;
 };
