@@ -339,25 +339,6 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
             </value>
         </block>
         <block id="${targetId}_volume" type="sound_volume"/>
-        <block type="sound_playSoundFromMQTT">
-            <value name="SOUND">
-            <shadow type="text">
-               <field name="TEXT">Sound</field>
-            </shadow>
-            </value>
-            <value name="SATELLITE">
-            <shadow type="text">
-                <field name="TEXT">satellite</field>
-            </shadow>
-            </value>
-        </block>
-        <block type="sound_setVolume" id="sound_setVolume">
-        <value name="SATELLITE">
-            <shadow type="text">
-            <field name="TEXT">satellite</field>
-            </shadow>
-        </value>
-        </block>
         ${categorySeparator}
     </category>
     `;
@@ -736,20 +717,6 @@ const myBlocks = function () {
 };
 /* eslint-enable no-unused-vars */
 
-const gameControl = function () {
-    return `
-    <category 
-        name="Game Control"
-        id="countdownGame"
-        colour="#CF173B"
-        secondaryColour="#900C3F" 
-        showStatusButton="false">
-            <block type="countdown_gameMode" id="countdown_gameMode"></block>'
-            <block type="countdown_gameModeCheck" id="countdown_gameModeCheck"></block>
-    </category>
-    `;
-};
-
 const display = function () {
     return `
     <category 
@@ -811,7 +778,7 @@ const display = function () {
 const lights = function () {
     return `
     '<category
-        name="Lights"
+        name="Lights and Sounds"
         id="lights"
         colour="#3399ff"
         secondaryColour="#1556E1"
@@ -828,6 +795,25 @@ const lights = function () {
                     </shadow>
                 </value>
             </block>
+            <block type="sound_playSoundFromMQTT">
+            <value name="SOUND">
+            <shadow type="text">
+                <field name="TEXT">Sound</field>
+            </shadow>
+            </value>
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+        </block>
+        <block type="sound_setVolume" id="sound_setVolume">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
         </category>
     `;
 };
@@ -1026,7 +1012,6 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const controlXML = moveCategory('control') || control(isInitialSetup, isStage, targetId);
     const sensingXML = moveCategory('sensing') || sensing(isInitialSetup, isStage, targetId);
     const operatorsXML = moveCategory('operators') || operators(isInitialSetup, isStage, targetId);
-    const gameControlXML = moveCategory('gameControl') || gameControl(isStage, targetId);
     const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
     // playspot blocks
@@ -1046,7 +1031,6 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         controlXML, gap,
         sensingXML, gap,
         operatorsXML, gap,
-        gameControlXML, gap,
         displayXML, gap,
         lightsXML, gap,
         messagesXML, gap,
