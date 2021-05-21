@@ -173,6 +173,7 @@ class MenuBar extends React.Component {
             'getSaveToComputerHandler',
             'restoreOptionMessage',
             'handleMqttConnect',
+            'handleMqttDisconnect',
             'handleClientChange',
             'handleClientDisconnect'
         ]);
@@ -274,6 +275,9 @@ class MenuBar extends React.Component {
     }
     handleMqttConnect () {
         this.props.onClickMqtt('playspot');
+    }
+    handleMqttDisconnect () {
+        this.props.vm.runtime.emit('DISCONNECT_FROM_MQTT');
     }
     restoreOptionMessage (deletedItem) {
         switch (deletedItem) {
@@ -511,9 +515,12 @@ class MenuBar extends React.Component {
                         </div>
                         <div
                             className={classNames(styles.menuBarItem, styles.hoverable)}
-                            onMouseUp={this.handleMqttConnect}
+                            onMouseUp={this.state.connected ? this.handleMqttDisconnect : this.handleMqttConnect}
                         >
-                            <div>MQTT Connect</div>
+                            <div>
+                                {this.state.connected ? "MQTT Disconnect" : "MQTT Connect"}
+                                    {/* MQTT Connect */}
+                            </div>
                         </div>
                     </div>
                     <div>
