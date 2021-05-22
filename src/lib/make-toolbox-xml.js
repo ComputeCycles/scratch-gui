@@ -814,6 +814,18 @@ const lights = function () {
             </shadow>
         </value>
         </block>
+        <block type="virtualsat_stopEvent">
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
+        </block>
         </category>
     `;
 };
@@ -826,7 +838,7 @@ const messages = function () {
             colour="#008080"
             secondaryColour="#008080"
             showStatusButton="false">
-        <block type="message_sendGameMQTT">
+        <block type="message_sendValueToTopic">
             <value name="VALUE">
                 <shadow type="text">
                     <field name="TEXT">value</field>
@@ -834,29 +846,6 @@ const messages = function () {
             </value>
             <value name="TOPIC">
                 <shadow type="text">
-                    <field name="TEXT">topic</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="message_receiveGameMQTT">
-            <value name="TOPIC">
-                <shadow type="text">
-                    <field name="TEXT">topic</field>
-                </shadow>
-                </value>
-        </block>
-        <block type="message_waitUntilBroadcast">
-            <value name="TOPIC">
-                <shadow type="text">
-                    <field name="TEXT">topic</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="message_resetThread">
-        </block>
-        <block type="listen_whenMQTTpubreceived">
-            <value name="TOPIC">
-            <shadow type="text">
                     <field name="TEXT">topic</field>
                 </shadow>
             </value>
@@ -882,7 +871,6 @@ const movement = function () {
         colour="#6666ff"
         secondaryColour="#2323B2"
         showStatusButton="false">
-        <block type="movement_waitUntilSatSensing"></block>
         <block type="movement_whenAnyPresenceSensed">
         <value name="SATELLITE">
             <shadow type="text">
@@ -891,6 +879,13 @@ const movement = function () {
         </value>
         </block>
         <block type="movement_arePresencesSensed">
+        <value name="SATELLITE">
+            <shadow type="text">
+            <field name="TEXT">satellite</field>
+            </shadow>
+        </value>
+        </block>
+        <block type="virtualsat_setRadarSensitivities" id="virtualsat_setRadarSensitivities">
         <value name="SATELLITE">
             <shadow type="text">
             <field name="TEXT">satellite</field>
@@ -909,7 +904,6 @@ const touch = function () {
         colour="#ff6699"
         secondaryColour="#AB1D4C"
         howStatusButton="false">
-        <block type="touch_waitUntilSatTouched"></block>
         <block type="touch_whenAnySatTouched">
         <value name="SATELLITE">
             <shadow type="text">
@@ -935,26 +929,7 @@ const virtualsat = function () {
         id="virtualSat"
         colour="#118000"
         secondaryColour="#13520A"
-        showStatusButton="true">
-        <block type="virtualsat_stopEvent">
-            <value name="SATELLITE">
-            <shadow type="text">
-                <field name="TEXT">satellite</field>
-            </shadow>
-            </value>
-            <value name="SATELLITE">
-            <shadow type="text">
-                <field name="TEXT">satellite</field>
-            </shadow>
-            </value>
-        </block>
-        <block type="virtualsat_setRadarSensitivities" id="virtualsat_setRadarSensitivities">
-        <value name="SATELLITE">
-            <shadow type="text">
-            <field name="TEXT">satellite</field>
-            </shadow>
-        </value>
-        </block>
+        showStatusButton="false">
         <block type="virtualsat_cycleSatellitePower"></block>
         <block type="virtualsat_rebootSatellite">
         <value name="SATELLITE">
