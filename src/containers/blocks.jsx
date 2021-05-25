@@ -337,7 +337,7 @@ class Blocks extends React.Component {
         // Use try/catch because this requires digging pretty deep into the VM
         // Code inside intentionally ignores several error situations (no stage, etc.)
         // Because they would get caught by this try/catch
-        // debugger
+
         try {
             let {editingTarget: target, runtime} = this.props.vm;
             const stage = runtime.getTargetForStage();

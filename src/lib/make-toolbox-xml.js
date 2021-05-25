@@ -717,17 +717,17 @@ const myBlocks = function () {
 };
 /* eslint-enable no-unused-vars */
 
-const display = function () {
+const playspotDisplay = function () {
     return `
     <category 
         name="Display Control"
-        id="display"
+        id="playspotDisplay"
         colour="#17C1CF"
         secondaryColour="#1D7B83" 
         showStatusButton="false">
-            <block type="display_image" id="display_image"></block>
-            <block type="display_animateImage" id="display_animateImage"></block>
-            <block type="display_fillImage" id="display_fillImage">
+            <block type="playspotDisplay_image" id="playspotDisplay_image"></block>
+            <block type="playspotDisplay_animateImage" id="playspotDisplay_animateImage"></block>
+            <block type="playspotDisplay_fillImage" id="playspotDisplay_fillImage">
                 <value name="BEGIN">
                     <shadow type="text">
                         <field name="TEXT">begin</field>
@@ -754,7 +754,7 @@ const display = function () {
                     </shadow>
                 </value>
             </block>
-            <block type="display_displayHistogram" id="display_displayHistogram">
+            <block type="playspotDisplay_displayHistogram" id="playspotDisplay_displayHistogram">
                 <value name="RED">
                     <shadow type="text">
                         <field name="TEXT">red</field>
@@ -862,7 +862,7 @@ const messages = function () {
             colour="#008080"
             secondaryColour="#008080"
             showStatusButton="false">
-        <block type="message_sendValueToTopic">
+        <block type="messages_sendValueToTopic">
             <value name="VALUE">
                 <shadow type="text">
                     <field name="TEXT">value</field>
@@ -874,14 +874,14 @@ const messages = function () {
                 </shadow>
             </value>
         </block>
-        <block type="message_addSubscription">
+        <block type="messages_addSubscription">
             <value name="TOPIC">
             <shadow type="text">
                     <field name="TEXT">topic</field>
                 </shadow>
             </value>
         </block>
-        <block type="message_deleteSubscriptions">
+        <block type="messages_deleteSubscriptions">
         </block>
     </category>
     `;
@@ -1014,7 +1014,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
     // playspot blocks
-    const displayXML = moveCategory('display') || display(isStage, targetId);
+    const playspotDisplayXML = moveCategory('playspotDisplay') || playspotDisplay(isStage, targetId);
     const lightsXML = moveCategory('lights') || lights(isStage, targetId);
     const messagesXML = moveCategory('messages') || messages(isStage, targetId);
     const movementXML = moveCategory('movement') || movement(isStage, targetId);
@@ -1030,7 +1030,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         controlXML, gap,
         sensingXML, gap,
         operatorsXML, gap,
-        displayXML, gap,
+        playspotDisplayXML, gap,
         lightsXML, gap,
         messagesXML, gap,
         movementXML, gap,
