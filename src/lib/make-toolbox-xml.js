@@ -795,18 +795,6 @@ const lights = function () {
                     </shadow>
                 </value>
             </block>
-            <block type="lights_sendSequenceGroup">
-                <value name="VALUE">
-                    <shadow type="text">
-                        <field name="TEXT">sequence</field>
-                    </shadow>
-                </value>
-                <value name="SATELLITE_GROUP">
-                    <shadow type="text">
-                        <field name="TEXT">satellite group</field>
-                    </shadow>
-                </value>
-            </block>
             <block type="sound_playSoundFromMQTT">
             <value name="SOUND">
             <shadow type="text">
@@ -816,18 +804,6 @@ const lights = function () {
             <value name="SATELLITE">
             <shadow type="text">
                 <field name="TEXT">satellite</field>
-            </shadow>
-            </value>
-        </block>
-            <block type="sound_playSoundFromMQTTGroup">
-            <value name="SOUND">
-            <shadow type="text">
-                <field name="TEXT">Sound</field>
-            </shadow>
-            </value>
-            <value name="SATELLITE_GROUP">
-            <shadow type="text">
-                <field name="TEXT">satellite group</field>
             </shadow>
             </value>
         </block>
