@@ -188,7 +188,7 @@ const mapStateToProps = state => ({
     extensionId: state.scratchGui.connectionModal.extensionId,
     playspotAddress: state.playspotAddress,
     playspotUserName: state.playspotUserName,
-    playspotPassword: state.playspotPassword,
+    playspotPassword: state.playspotPassword
 });
 
 const mapDispatchToProps = dispatch => ({
