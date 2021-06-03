@@ -814,7 +814,7 @@ const lights = function () {
             </shadow>
         </value>
         </block>
-        <block type="virtualsat_stopEvent">
+        <block type="deviceControl_stopEvent">
             <value name="SATELLITE">
             <shadow type="text">
                 <field name="TEXT">satellite</field>
@@ -885,7 +885,7 @@ const movement = function () {
             </shadow>
         </value>
         </block>
-        <block type="virtualsat_setRadarSensitivities" id="virtualsat_setRadarSensitivities">
+        <block type="deviceControl_setRadarSensitivities" id="deviceControl_setRadarSensitivities">
         <value name="SATELLITE">
             <shadow type="text">
             <field name="TEXT">satellite</field>
@@ -922,16 +922,16 @@ const touch = function () {
     `;
 };
 
-const virtualsat = function () {
+const deviceControl = function () {
     return `
     <category
         name="Device Control"
-        id="virtualSat"
+        id="deviceControl"
         colour="#118000"
         secondaryColour="#13520A"
         showStatusButton="false">
-        <block type="virtualsat_cycleSatellitePower"></block>
-        <block type="virtualsat_rebootSatellite">
+        <block type="deviceControl_cycleSatellitePower"></block>
+        <block type="deviceControl_rebootSatellite">
         <value name="SATELLITE">
         <shadow type="text">
             <field name="TEXT">satellite</field>
@@ -995,7 +995,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const messagesXML = moveCategory('messages') || messages(isStage, targetId);
     const movementXML = moveCategory('movement') || movement(isStage, targetId);
     const touchXML = moveCategory('touch') || touch(isStage, targetId);
-    const virtualsatXML = moveCategory('virtualsat') || virtualsat(isStage, targetId);
+    const deviceControlXML = moveCategory('deviceControl') || deviceControl(isStage, targetId);
 
     const everything = [
         xmlOpen,
@@ -1011,7 +1011,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
         messagesXML, gap,
         movementXML, gap,
         touchXML, gap,
-        virtualsatXML, gap,
+        deviceControlXML, gap,
         variablesXML, gap,
         myBlocksXML
     ];
