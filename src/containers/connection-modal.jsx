@@ -9,6 +9,11 @@ import extensionData from '../lib/libraries/extensions/index.jsx';
 import {connect} from 'react-redux';
 import {closeConnectionModal} from '../reducers/modals';
 
+import playspotsImage from '../lib/assets/playspots.png';
+import playspotsInsetImage from '../lib/assets/playspots-80x80.png';
+import playspotsConnectionIconURL from '../lib/assets/playspots-illustration.png';
+import playspotsConnectionSmallIconURL from '../lib/assets/playspots-80x80.png';
+
 class ConnectionModal extends React.Component {
     constructor (props) {
         super(props);
@@ -145,8 +150,10 @@ class ConnectionModal extends React.Component {
         return (
             <ConnectionModalComponent
                 connectingMessage={this.state.extension && this.state.extension.connectingMessage}
-                connectionIconURL={this.state.extension && this.state.extension.connectionIconURL}
-                connectionSmallIconURL={this.state.extension && this.state.extension.connectionSmallIconURL}
+                connectionIconURL={playspotsConnectionIconURL}
+                connectionSmallIconURL={playspotsConnectionSmallIconURL}
+                iconURL={playspotsImage}
+                insetIconURL={playspotsInsetImage}
                 connectionTipIconURL={this.state.extension && this.state.extension.connectionTipIconURL}
                 extensionId={this.props.extensionId}
                 name={this.state.extension && this.state.extension.name}
