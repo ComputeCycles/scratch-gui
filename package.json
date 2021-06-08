@@ -79,7 +79,7 @@
     "redux": "3.7.2",
     "redux-throttle": "0.1.1",
     "scratch-audio": "0.1.0-prerelease.20200528195344",
-    "scratch-blocks": "git+https://github.com/ComputeCycles/scratch-blocks.git#playspot-dev-update",
+    "scratch-blocks": "git+https://github.com/ComputeCycles/scratch-blocks.git#8c1eab08ebf5a2145928ba5c6878e490c6064052",
     "scratch-l10n": "3.10.20200923030814",
     "scratch-paint": "0.2.0-prerelease.20200831213104",
     "scratch-render": "0.1.0-prerelease.20200827214414",
