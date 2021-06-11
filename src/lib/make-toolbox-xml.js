@@ -871,6 +871,13 @@ const messages = function () {
                 </shadow>
             </value>
         </block>
+        <block type="messages_unassignTopicToMessage">
+            <value name="MESSAGE">
+                <shadow type="text">
+                    <field name="TEXT">message</field>
+                </shadow>
+            </value>
+        </block>
     </category>
     `;
 };
