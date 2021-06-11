@@ -859,6 +859,18 @@ const messages = function () {
         </block>
         <block type="messages_deleteSubscriptions">
         </block>
+        <block type="messages_assignTopicToMessage">
+            <value name="TOPIC">
+                <shadow type="text">
+                    <field name="TEXT">topic</field>
+                </shadow>
+            </value>
+            <value name="MESSAGE">
+                <shadow type="text">
+                    <field name="TEXT">message</field>
+                </shadow>
+            </value>
+        </block>
     </category>
     `;
 };
