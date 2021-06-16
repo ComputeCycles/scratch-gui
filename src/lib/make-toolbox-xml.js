@@ -951,14 +951,21 @@ const virtualsat = function () {
         showStatusButton="false">
         <block type="virtualsat_cycleSatellitePower"></block>
         <block type="virtualsat_rebootSatellite">
-        <value name="SATELLITE">
-        <shadow type="text">
-            <field name="TEXT">satellite</field>
-        </shadow>
-        </value>
+            <value name="SATELLITE">
+            <shadow type="text">
+                <field name="TEXT">satellite</field>
+            </shadow>
+            </value>
         </block>
-  </category>
-  `;
+        <block type="virtualsat_loadGameFile">
+            <value name="GAMENAME">
+            <shadow type="text">
+                <field name="TEXT">file name</field>
+            </shadow>
+            </value>
+        </block>
+    </category>
+    `;
 };
 
 const xmlOpen = '<xml style="display: none">';
