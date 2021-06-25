@@ -69,6 +69,7 @@ const handleFileUpload = function (fileInput, onload, onerror) {
  * which can be used to look up the data in storage
  */
 const createVMAsset = function (storage, assetType, dataFormat, data) {
+    debugger
     const asset = storage.createAsset(
         assetType,
         dataFormat,

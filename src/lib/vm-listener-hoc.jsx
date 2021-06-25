@@ -12,6 +12,7 @@ import {setProjectChanged, setProjectUnchanged} from '../reducers/project-change
 import {setRunningState, setTurboState, setStartedState} from '../reducers/vm-status';
 import {showExtensionAlert} from '../reducers/alerts';
 import {updateMicIndicator} from '../reducers/mic-indicator';
+import {onFetchedProjectData} from '../reducers/project-state';
 
 /*
  * Higher Order Component to manage events emitted by the VM
@@ -36,6 +37,7 @@ const vmListenerHOC = function (WrappedComponent) {
             // we need to start listening before mounting the wrapped component.
             this.props.vm.on('targetsUpdate', this.handleTargetsUpdate);
             this.props.vm.on('MONITORS_UPDATE', this.props.onMonitorsUpdate);
+            this.props.vm.on('LOAD_GAME_FROM_VM', this.props.onLoadGameFromVM);
             this.props.vm.on('BLOCK_DRAG_UPDATE', this.props.onBlockDragUpdate);
             this.props.vm.on('TURBO_MODE_ON', this.props.onTurboModeOn);
             this.props.vm.on('TURBO_MODE_OFF', this.props.onTurboModeOff);
@@ -74,6 +76,7 @@ const vmListenerHOC = function (WrappedComponent) {
             }
         }
         handleProjectChanged () {
+            debugger
             if (this.props.shouldUpdateProjectChanged && !this.props.projectChanged) {
                 this.props.onProjectChanged();
             }
@@ -126,6 +129,7 @@ const vmListenerHOC = function (WrappedComponent) {
                 onKeyUp,
                 onMicListeningUpdate,
                 onMonitorsUpdate,
+                onLoadGameFromVM,
                 onTargetsUpdate,
                 onProjectChanged,
                 onProjectRunStart,
@@ -149,6 +153,7 @@ const vmListenerHOC = function (WrappedComponent) {
         onKeyUp: PropTypes.func,
         onMicListeningUpdate: PropTypes.func.isRequired,
         onMonitorsUpdate: PropTypes.func.isRequired,
+        onLoadGameFromVM: PropTypes.func.isRequired,
         onProjectChanged: PropTypes.func.isRequired,
         onProjectRunStart: PropTypes.func.isRequired,
         onProjectRunStop: PropTypes.func.isRequired,
@@ -186,6 +191,14 @@ const vmListenerHOC = function (WrappedComponent) {
         },
         onMonitorsUpdate: monitorList => {
             dispatch(updateMonitors(monitorList));
+        },
+        onLoadGameFromVM: file => {
+            debugger
+            const reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = () => {
+                props.vm.loadProject(reader.result);
+            };
         },
         onBlockDragUpdate: areBlocksOverGui => {
             dispatch(updateBlockDrag(areBlocksOverGui));

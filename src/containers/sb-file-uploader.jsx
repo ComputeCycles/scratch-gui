@@ -68,6 +68,8 @@ class SBFileUploader extends React.Component {
         this.resetFileInput();
     }
     componentDidUpdate (prevProps) {
+        debugger
+        // what does fileToUpload look like here?
         if (this.props.isLoadingUpload && !prevProps.isLoadingUpload && this.fileToUpload && this.reader) {
             this.reader.readAsArrayBuffer(this.fileToUpload);
         }
@@ -125,6 +127,7 @@ class SBFileUploader extends React.Component {
         if (this.reader) {
             this.props.onLoadingStarted();
             const filename = this.fileToUpload && this.fileToUpload.name;
+            debugger
             this.props.vm.loadProject(this.reader.result)
                 .then(() => {
                     this.props.onLoadingFinished(this.props.loadingState, true);
@@ -151,6 +154,7 @@ class SBFileUploader extends React.Component {
         this.fileInput.click();
     }
     setFileInput (input) {
+        // debugger
         this.fileInput = input;
     }
     renderFileInput () {

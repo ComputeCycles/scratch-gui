@@ -151,6 +151,7 @@ const reducer = function (state, action) {
     case DONE_LOADING_VM_WITHOUT_ID:
         if (state.loadingState === LoadingState.LOADING_VM_FILE_UPLOAD ||
             state.loadingState === LoadingState.LOADING_VM_NEW_DEFAULT) {
+            debugger
             return Object.assign({}, state, {
                 loadingState: LoadingState.SHOWING_WITHOUT_ID,
                 projectId: defaultProjectId
