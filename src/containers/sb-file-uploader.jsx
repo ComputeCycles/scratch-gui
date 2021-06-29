@@ -103,6 +103,7 @@ class SBFileUploader extends React.Component {
         } = this.props;
 
         const thisFileInput = e.target;
+        debugger
         if (thisFileInput.files) { // Don't attempt to load if no file was selected
             this.fileToUpload = thisFileInput.files[0];
 

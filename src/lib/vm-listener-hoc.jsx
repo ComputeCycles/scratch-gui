@@ -12,7 +12,6 @@ import {setProjectChanged, setProjectUnchanged} from '../reducers/project-change
 import {setRunningState, setTurboState, setStartedState} from '../reducers/vm-status';
 import {showExtensionAlert} from '../reducers/alerts';
 import {updateMicIndicator} from '../reducers/mic-indicator';
-import {onFetchedProjectData} from '../reducers/project-state';
 
 /*
  * Higher Order Component to manage events emitted by the VM
@@ -197,7 +196,7 @@ const vmListenerHOC = function (WrappedComponent) {
             const reader = new FileReader();
             reader.readAsArrayBuffer(file);
             reader.onload = () => {
-                props.vm.loadProject(reader.result);
+                this.props.vm.loadProject(reader.result);
             };
         },
         onBlockDragUpdate: areBlocksOverGui => {
