@@ -518,8 +518,7 @@ class MenuBar extends React.Component {
                             onMouseUp={this.state.connected ? this.handleMqttDisconnect : this.handleMqttConnect}
                         >
                             <div>
-                                {this.state.connected ? "MQTT Disconnect" : "MQTT Connect"}
-                                    {/* MQTT Connect */}
+                                {this.state.connected ? 'MQTT Disconnect' : 'MQTT Connect'}
                             </div>
                         </div>
                     </div>
